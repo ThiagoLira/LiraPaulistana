@@ -1,18 +1,23 @@
 
 $(document).ready(function(){
 
-    $(".nav.navbar-nav ul").hover(
+    $("#teste3").hover(
 	
 	    function(){
-		    $('ul', this).fadeIn();
+		    $("#logbar").fadeIn();
 
+		    	console.log("OIEEEEEE");
 		    
 		},
 		
 		function(){
-		   $('div', this).fadeOut();
+		   $("#logbar").fadeOut();
 		}
 	
 	);
 
 });
+
+
+//".nav.navbar-nav div"
+//".nav.navbar-nav li"

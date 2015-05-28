@@ -1,8 +1,18 @@
 <?php
-	class Item{
+	class Item {
+		private $itemId;
 		private $link;
 		private $tipo;
-		private $data_adicao;
+		// private $data_adicao;
+		private $professorId;
+		private $alunoId;
+
+		public function getId(){
+			return $this->itemId;
+		}
+		public function setId($id){
+			$this->itemId = $id;
+		}
 
 		public function getLink(){
 			return $this->link;
@@ -18,11 +28,100 @@
 			$this->tipo = $tip;
 		}
 
-		public function getData_adicao(){
-			return $this->data_adicao;
+		// public function getData_adicao(){
+		// 	return $this->data_adicao;
+		// }
+		// public function setData_adicao($data){
+		// 	$this->data_adicao = $data;
+		// }
+
+		public function getProfessorId(){
+			return $this->professorId;
 		}
-		public function setData_adicao($data){
-			$this->data_adicao = $data;
+		public function setProfessorId($id){
+			$this->professorId = $id;
+		}
+
+		public function getAlunoId(){
+			return $this->alunoId;
+		}
+		public function setAlunoId($id){
+			$this->alunoId = $id;
+		}
+
+		public function insert() {
+			try {
+				global $db;
+
+				$insert = $db->prepare("INSERT INTO Item(link,tipo,professorId,alunoId) VALUES (:link,:tipo,:professorId,:alunoId)");
+				$insert->bindParam(":link", $this->getLink(), PDO::PARAM_STR);
+				$insert->bindParam(":tipo", $this->getTipo(), PDO::PARAM_STR);
+				$insert->bindParam(":professorId", $this->getProfessorId(), PDO::PARAM_INT);
+				$insert->bindParam(":alunoId", $this->getAlunoId(), PDO::PARAM_INT);
+				$insert->execute();
+
+				$this->setId($db->lastInsertId());
+
+				return true;
+			}
+			catch(PDOException $e) {
+				return false;
+			}
+		}
+
+		public function update() {
+			try {
+				global $db;
+
+				$update = $db->prepare("UPDATE Item SET link = :link, tipo = :tipo, professorId = :professorId, alunoId = :alunoId WHERE itemId = :id");
+				$update->bindParam(":id", $this->getId(), PDO::PARAM_INT);
+				$update->bindParam(":link", $this->getLink(), PDO::PARAM_STR);
+				$update->bindParam(":tipo", $this->getTipo(), PDO::PARAM_STR);
+				$update->bindParam(":professorId", $this->getProfessorId(), PDO::PARAM_INT);
+				$update->bindParam(":alunoId", $this->getAlunoId(), PDO::PARAM_INT);
+				$update->execute();
+
+				return true;
+			}
+			catch(PDOException $e) {
+				return false;
+			}
+		}
+
+		public function select($id) {
+			try {
+				global $db;
+
+				$select = $db->prepare("SELECT * FROM Item WHERE Item.itemId = :id");
+				$select->bindParam(":id", $id, PDO::PARAM_INT);
+				$select->execute();
+
+				$umItem = $select->fetch(PDO::FETCH_ASSOC);
+
+				if(count($umItem)>0){
+					$this->setLink($umItem['link']);
+					$this->setTipo($umItem['tipo']);
+					$this->setProfessorId($umItem['professorId']);
+					$this->setAlunoId($umItem['alunoId']);
+				}
+
+				return true;
+			}
+			catch(PDOException $e) {
+				return false;
+			}
+		}
+
+		public function delete() {
+			try {
+				$delete = $db->prepare("DELETE FROM Item WHERE itemId = :id");
+				$delete->bindParam(":id", $this->getId());
+				$delete->execute();
+
+				return true;
+			}
+			catch (PDOException $e) {
+				return false;
+			}
 		}
 	}
-?>

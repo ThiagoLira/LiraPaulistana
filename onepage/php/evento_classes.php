@@ -14,10 +14,11 @@ abstract class Evento {
 	}
 
 	public function getData(){
-		return $this->data;
+		return $this->data->format("Y-m-d");
 	}
 	public function setData($novaData){
-		$this->data = $novaData;
+		$dataFormatada = DateTime::createFromFormat("d/m/Y", $novaData);
+		$this->data = $dataFormatada;
 	}
 
 	public function getHorario(){
@@ -107,9 +108,11 @@ class Aula extends Evento {
 			$insertAula->bindParam(":alunoId", $this->getAlunoId(), PDO::PARAM_INT);
 			$insertAula->bindParam(":professorId", $this->getProfessorId(), PDO::PARAM_INT);
 			$insertAula->execute();
+
+			return true;
 		}
 		catch (PDOException $e) {
-			echo "Erro ao adicionar aula.";
+			return false;
 		}
 	}
 
@@ -133,9 +136,11 @@ class Aula extends Evento {
 			$updateAula->bindParam(":professorId", $this->getProfessorId(), PDO::PARAM_INT);
 			$updateAula->bindParam(":id", $this->getId(), PDO::PARAM_INT);
 			$updateAula->execute();
+
+			return true;
 		}
 		catch (PDOException $e) {
-			echo "Erro ao atualizar aula.";
+			return false;
 		}
 	}
 
@@ -150,6 +155,7 @@ class Aula extends Evento {
 			$umaAula = $select->fetch(PDO::FETCH_ASSOC);
 
 			if(count($umaAula)>0){
+				$this->setId($umaAula['eventoId']);
 				$this->setData($umaAula['data']);
 				$this->setHorario($umaAula['horario']);
 				$this->setInstrumento($umaAula['instrumento']);
@@ -157,10 +163,14 @@ class Aula extends Evento {
 				$this->setSala($umaAula['sala']);
 				$this->setTipo($umaAula['tipo']);
 				$this->setPresenca($umaAula['presenca']);
+				$this->setAlunoId($umaAula['alunoId']);
+				$this->setProfessorId($umaAula['professorId']);
 			}
+
+			return true;
 		}
 		catch(PDOException $e) {
-			echo "Erro ao buscar aula.";
+			return false;
 		}
 	}
 
@@ -169,9 +179,11 @@ class Aula extends Evento {
 			$delete = $db->prepare("DELETE FROM Evento WHERE eventoId = :id");
 			$delete->bindParam(":id", $this->getId());
 			$delete->execute();
+
+			return true;
 		}
 		catch (PDOException $e) {
-			echo "Erro ao deletar aula.";
+			return false;
 		}
 	}
 }
@@ -262,6 +274,7 @@ class EventoMusical extends Evento {
 			$umEvento = $select->fetch(PDO::FETCH_ASSOC);
 
 			if(count($umEvento)>0){
+				$this->setId($umEvento['eventoId']);
 				$this->setData($umEvento['data']);
 				$this->setHorario($umEvento['horario']);
 				$this->setNome($umEvento['nome']);

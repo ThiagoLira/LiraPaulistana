@@ -1,0 +1,31 @@
+<?php
+	require_once "usuario_classes.php";
+	require_once "conexao.php";
+
+	public class aplicacao{
+
+		public function getAlunos(){
+				try{
+				$alunos = $db->prepare("SELECT * FROM Aluno A, Usuario U WHERE A.usuarioId = U.usuarioId");
+				$alunos->execute();
+
+				$todosAlunos = $alunos->fetchAll();
+
+
+				foreach($todosAlunos as $umAluno){
+					echo "Nome: " . ($umAluno["nome"]) . "</br>";
+					echo "Nascimento: " . ($umAluno["dataNascimento"]) . "</br>";
+					echo "RG: " . ($umAluno["rg"]) . "</br>";
+					echo "CPF: " . ($umAluno["cpf"]) . "</br>";
+					echo "Endereço: " . ($umAluno["endereco"]) . "</br>";
+					echo "Telefone: " . ($umAluno["telefone"]) . "</br>";
+					echo "Celular: " . ($umAluno["celular"]) . "</br>";
+					echo "E-mail: " . ($umAluno["email"]) . "</br>";
+					echo "</br>";
+					}
+				} catch(PDOException $e){
+					var_dump($e) ;
+			}
+		}
+	}
+?>

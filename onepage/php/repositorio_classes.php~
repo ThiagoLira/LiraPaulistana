@@ -114,11 +114,9 @@
 
 		public function delete() {
 			try {
-			global $db;			
-			
-			$delete = $db->prepare("DELETE FROM Evento WHERE itemId = :id");
-			$delete->bindParam(":id", $this->getId(), PDO::PARAM_INT);
-			$delete->execute();
+				$delete = $db->prepare("DELETE FROM Item WHERE itemId = :id");
+				$delete->bindParam(":id", $this->getId());
+				$delete->execute();
 
 				return true;
 			}

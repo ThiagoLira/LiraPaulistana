@@ -292,10 +292,8 @@ class Administrador extends Usuario {
 
 	public function delete(){
 		try {
-			global $db;			
-			
-			$delete = $db->prepare("DELETE FROM Evento WHERE usuarioId = :id");
-			$delete->bindParam(":id", $this->getId(), PDO::PARAM_INT);
+			$delete = $db->prepare("DELETE FROM Usuario WHERE usuarioId = :id");
+			$delete->bindParam(":id", $this->getId());
 			$delete->execute();
 
 			return true;
@@ -398,10 +396,8 @@ class Operador extends Usuario {
 
 	public function delete(){
 		try {
-			global $db;			
-			
-			$delete = $db->prepare("DELETE FROM Evento WHERE usuarioId = :id");
-			$delete->bindParam(":id", $this->getId(), PDO::PARAM_INT);
+			$delete = $db->prepare("DELETE FROM Usuario WHERE usuarioId = :id");
+			$delete->bindParam(":id", $this->getId());
 			$delete->execute();
 
 			return true;
@@ -536,10 +532,8 @@ class Professor extends Usuario {
 
 	public function delete(){
 		try {
-			global $db;			
-			
-			$delete = $db->prepare("DELETE FROM Evento WHERE usuarioId = :id");
-			$delete->bindParam(":id", $this->getId(), PDO::PARAM_INT);
+			$delete = $db->prepare("DELETE FROM Usuario WHERE usuarioId = :id");
+			$delete->bindParam(":id", $this->getId());
 			$delete->execute();
 
 			return true;

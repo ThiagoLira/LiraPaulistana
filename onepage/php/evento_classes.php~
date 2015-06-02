@@ -181,6 +181,7 @@ class Aula extends Evento {
 			$delete = $db->prepare("DELETE FROM Evento WHERE Evento.eventoId = :id");
 			$delete->bindParam(":id", $this->getId(), PDO::PARAM_INT);
 			$delete->execute();
+			echo "ponto";
 
 			return true;
 		}
@@ -293,10 +294,8 @@ class EventoMusical extends Evento {
 
 	public function delete(){
 		try {
-			global $db;			
-			
-			$delete = $db->prepare("DELETE FROM Evento WHERE Evento.eventoId = :id");
-			$delete->bindParam(":id", $this->getId(), PDO::PARAM_INT);
+			$delete = $db->prepare("DELETE FROM Evento WHERE eventoId = :id");
+			$delete->bindParam(":id", $this->getId());
 			$delete->execute();
 
 			return true;

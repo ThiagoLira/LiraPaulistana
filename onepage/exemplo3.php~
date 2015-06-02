@@ -13,8 +13,6 @@ foreach($todosUsuarios as $umUsuario){
 	var_dump($umUsuario);
 }
 
-echo "--------------------------------------------------------------";
-
 $aula = new Aula();
 
 $aula->setData("11/06/2015");

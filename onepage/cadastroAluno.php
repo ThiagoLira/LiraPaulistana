@@ -1,26 +1,33 @@
 <?php
 require_once "php/usuario_classes.php";
 require_once "php/login.php";
-
+require_once "php/aplicacao";
 require_once "php/conexao.php";
 
 global $db;
 
 
 $aluno = new Aluno();
+if (is_null($preferencia) && is_null($formacao) && is_null($instrumento)){
 
-$nome = $_POST["nome"];
-//$dataNascimento = $_POST["nome"];
-$rg = $_POST["rg"];
-$cpf = $_POST["cpf"];
-$endereco = $_POST["nome"];
-$telefone = $_POST["telefone"];
-$celular = $_POST["cel"];
-//$email = $_POST["email"];
+	insertAluno($nome, $nascimento, $rg, $cpf, $endereco, $telefone, $celular, $email);
+}
 
+else{
+
+	insertProf($nome, $nascimento, $rg, $cpf, $endereco, $telefone, $celular, $email, $instrumento, $formacao, $preferencia);
 
 
-echo $rg;
+}
+
+
+
+
+
+
+
+
+
 
 
 

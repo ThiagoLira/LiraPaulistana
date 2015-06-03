@@ -79,6 +79,7 @@
 						 		document.getElementById('profe1').style.display='none';
 						 		document.getElementById('profe2').style.display='none';
 
+						 	
 						 }
 
 						 if (strUser=="Professor")
@@ -118,7 +119,7 @@
 				<body>
 					<div>
 						<form name="cadastroAluno" method="post" action="cadastroAluno.php">
-							<select id="profaluno" onclick="selecionaCadastro();">
+							<select id="profaluno" onmouseout="selecionaCadastro();">
 							  <option value="Professor">Professor</option>
 							  <option  value="Aluno"  selected="selected" >Aluno</option>
 							</select>

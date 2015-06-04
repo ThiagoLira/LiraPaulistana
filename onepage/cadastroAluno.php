@@ -9,7 +9,7 @@ global $db;
 
 $aluno = new Aluno();
 if (is_null($preferencia) && is_null($formacao) && is_null($instrumento)){
-
+	echo $preferencia;
 	insertAluno($nome, $nascimento, $rg, $cpf, $endereco, $telefone, $celular, $email);
 }
 

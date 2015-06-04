@@ -4,7 +4,7 @@
 	require_once "repositorio_classes.php";
 	
 
-	class aplicacao
+	class Aplicacao
 	{
 
 		public function teste(){

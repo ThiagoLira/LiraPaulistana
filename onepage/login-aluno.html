@@ -119,13 +119,13 @@
 				<body>
 					<div>
 						<form name="cadastroAluno" method="post" action="cadastroAluno.php">
-							<select id="profaluno" onmouseout="selecionaCadastro();">
+							<select name="profaluno" id="profaluno" onmouseout="selecionaCadastro();">
 							  <option value="Professor">Professor</option>
-							  <option  value="Aluno"  selected="selected" >Aluno</option>
+							  <option value="Aluno" selected="selected" >Aluno</option>
 							</select>
 							<br>
 							<span class="input input--hoshi">
-								<input class="input__field input__field--hoshi" type="text" id="input-1" />
+								<input class="input__field input__field--hoshi" name="nome" type="text" id="input-1" />
 								<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
 									<span class="input__label-content input__label-content--hoshi">Nome</span>
 								</label>
@@ -156,7 +156,7 @@
 							</span>
 							<br>
 							<span class="input input--hoshi">
-								<input maxlength="10" name="tel" onKeyPress="MascaraTelefone(cadastroAluno.tel);" class="input__field input__field--hoshi"
+								<input maxlength="10" name="datanasc" onKeyPress="MascaraTelefone(cadastroAluno.tel);" class="input__field input__field--hoshi"
 								type="text" id="input-4" />
 								<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-6">
 									<span class="input__label-content input__label-content--hoshi">Data de Nascimento</span>
@@ -164,7 +164,7 @@
 							</span>
 							<br>
 							<span class="input input--hoshi">
-								<input maxlength="10" name="tel" onKeyPress="MascaraTelefone(cadastroAluno.tel);" class="input__field input__field--hoshi"
+								<input maxlength="10" name="endereco" onKeyPress="MascaraTelefone(cadastroAluno.tel);" class="input__field input__field--hoshi"
 								type="text" id="input-4" />
 								<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-6">
 									<span class="input__label-content input__label-content--hoshi">Endereço</span>
@@ -172,7 +172,7 @@
 							</span>
 							<br>
 							<span class="input input--hoshi">
-								<input class="input__field input__field--hoshi" type="text" id="input-5" />
+								<input class="input__field input__field--hoshi" name="email" type="email" id="input-5" />
 								<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-6">
 									<span class="input__label-content input__label-content--hoshi">Email</span>
 								</label>

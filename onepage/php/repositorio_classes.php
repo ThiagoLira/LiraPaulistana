@@ -1,6 +1,7 @@
 <?php
 	class Item {
 		private $itemId;
+		private $nome;
 		private $link;
 		private $tipo;
 		// private $data_adicao;
@@ -12,6 +13,13 @@
 		}
 		public function setId($id){
 			$this->itemId = $id;
+		}
+
+		public function getNome(){
+			return $this->nome;
+		}
+		public function setNome($nome){
+			$this->nome = $nome;
 		}
 
 		public function getLink(){
@@ -53,7 +61,8 @@
 			try {
 				global $db;
 
-				$insert = $db->prepare("INSERT INTO Item(link,tipo,professorId,alunoId) VALUES (:link,:tipo,:professorId,:alunoId)");
+				$insert = $db->prepare("INSERT INTO Item(nome,link,tipo,professorId,alunoId) VALUES (:nome,:link,:tipo,:professorId,:alunoId)");
+				$insert->bindParam(":nome", $this->getNome(), PDO::PARAM_STR);
 				$insert->bindParam(":link", $this->getLink(), PDO::PARAM_STR);
 				$insert->bindParam(":tipo", $this->getTipo(), PDO::PARAM_STR);
 				$insert->bindParam(":professorId", $this->getProfessorId(), PDO::PARAM_INT);
@@ -73,8 +82,9 @@
 			try {
 				global $db;
 
-				$update = $db->prepare("UPDATE Item SET link = :link, tipo = :tipo, professorId = :professorId, alunoId = :alunoId WHERE itemId = :id");
+				$update = $db->prepare("UPDATE Item SET nome = :nome, link = :link, tipo = :tipo, professorId = :professorId, alunoId = :alunoId WHERE itemId = :id");
 				$update->bindParam(":id", $this->getId(), PDO::PARAM_INT);
+				$insert->bindParam(":nome", $this->getNome(), PDO::PARAM_STR);
 				$update->bindParam(":link", $this->getLink(), PDO::PARAM_STR);
 				$update->bindParam(":tipo", $this->getTipo(), PDO::PARAM_STR);
 				$update->bindParam(":professorId", $this->getProfessorId(), PDO::PARAM_INT);
@@ -99,6 +109,7 @@
 				$umItem = $select->fetch(PDO::FETCH_ASSOC);
 
 				if(count($umItem)>0){
+					$this->setNome($umItem['nome']);
 					$this->setLink($umItem['link']);
 					$this->setTipo($umItem['tipo']);
 					$this->setProfessorId($umItem['professorId']);

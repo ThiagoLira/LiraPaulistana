@@ -420,9 +420,10 @@
 	
 	
 	//CRUD de Item-----------------------------------------------------//
-	public function insertItem	($link, $tipo, $professorId, $alunoId){	
+	public function insertItem($nome, $link, $tipo, $professorId, $alunoId){	
 		$item = new Item();		
-	
+		
+		$item->setNome($nome);
 		$item->setLink($link);
 		$item->setTipo($tipo);
 		$item->setProfessorId($professorId);
@@ -439,10 +440,11 @@
 		return $item->delete();
 	}
 	
-	public function updateItem($itemId, $link, $tipo, $professorId, $alunoId){	
+	public function updateItem($itemId, $nome, $link, $tipo, $professorId, $alunoId){	
 		$item = new Item();
-		$item->select($itemId);		
-	
+		$item->select($itemId);
+
+		$item->setNome($nome);
 		$item->setLink($link);
 		$item->setTipo($tipo);
 		$item->setProfessorId($professorId);
@@ -461,6 +463,7 @@
 
 			foreach($todositens as $umItem){
 				echo "ID: " . ($umItem["eventoId"]) . "</br>";
+				echo "Nome: " . ($umItem["nome"]) . "</br>";
 				echo "Link: " . ($umItem["link"]) . "</br>";
 				echo "Tipo: " . ($umItem["tipo"]) . "</br>";
 				echo "ID do aluno: " . ($umItem["alunoId"]) . "</br>";

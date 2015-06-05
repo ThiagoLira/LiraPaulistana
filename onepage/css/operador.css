@@ -1,26 +1,18 @@
-.tituloPagina {
-
-	color: rgba(3,172,220,1);
-	font-family: "Baron Neue",sans-serif;
-	font-size: 32;
-}
-
-.listaOp{
-
-
-	list-style-type: none;
-}
-
-
 html{
-
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 	font-family: "Baron Neue",sans-serif;
-
 }
 
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
 
 button{
-
   min-height: 0px;
   min-width: 0px;
   line-height: 16px;
@@ -35,7 +27,62 @@ button{
   border-color: #03acdc;
   text-decoration: none !important;
   color: #fff !important;
-  
-
 }
 
+a {
+  color: #03ACDC;
+  text-decoration: none;
+}
+
+a:hover, a:active {
+  color: #FFCA28;
+}
+
+#wrapper {
+  width: 100%;
+}
+
+.section-white {
+  width: 70%;
+  margin: auto;
+  text-align: center;
+}
+
+.tituloPagina {
+  color: rgba(3,172,220,1);
+  font-family: "Baron Neue",sans-serif;
+  font-size: 32;
+}
+
+.listaOp {
+  padding: 0;
+  list-style-type: none;
+}
+
+.repositorio {
+  width: 90%;
+  margin: auto;
+  border-collapse: collapse;
+}
+
+.repositorio a:hover, .repositorio a:active {
+  color: #B9C1CA;
+}
+
+.repositorio thead {
+  color: #FFCA28;
+  border-bottom: 1px solid #B9C1CA;
+}
+
+.repositorio th {
+  padding: 0.5em;
+}
+
+.repositorio td {
+  padding: 0.5em 0.5em 0.25em 0.5em;
+}
+
+.repositorio .nomeItem {
+  text-align: left;
+  padding-left: 1em;
+}

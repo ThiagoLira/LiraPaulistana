@@ -2,11 +2,10 @@
 	require_once "usuario_classes.php";
 	require_once "evento_classes.php";
 	require_once "repositorio_classes.php";
+	require_once "login_classes.php";
 	
 
-	class Aplicacao
-	{
-
+	class Aplicacao {
 		public function teste(){
 			echo "este teste eh insano";		
 		}
@@ -266,32 +265,31 @@
 		return $prof->delete();
 	}			
 		
-		public function getProfessores($profs){
-				try{
-				$profs->execute();
+	public function getProfessores($profs){
+			try{
+			$profs->execute();
 
-				$todosProfs = $profs->fetchAll();
+			$todosProfs = $profs->fetchAll();
 
 
-				foreach($todosProfs as $umProf){
-					echo "Nome: " . ($umProf["nome"]) . "</br>";
-					echo "Nascimento: " . ($umProf["dataNascimento"]) . "</br>";
-					echo "RG: " . ($umProf["rg"]) . "</br>";
-					echo "CPF: " . ($umProf["cpf"]) . "</br>";
-					echo "Endereço: " . ($umProf["endereco"]) . "</br>";
-					echo "Telefone: " . ($umProf["telefone"]) . "</br>";
-					echo "Celular: " . ($umProf["celular"]) . "</br>";
-					echo "E-mail: " . ($umProf["email"]) . "</br>";
-					echo "Instrumento: " . ($umProf["instrumento"]) . "</br>";
-					echo "Formação Acadêmica: " . ($umProf["formacao"]) . "</br>";
-					echo "Preferências: " . ($umProf["preferencias"]) . "</br>";
-					echo "</br>";
-					}
-				} catch(PDOException $e){
-					var_dump($e) ;
-			}
-		
+			foreach($todosProfs as $umProf){
+				echo "Nome: " . ($umProf["nome"]) . "</br>";
+				echo "Nascimento: " . ($umProf["dataNascimento"]) . "</br>";
+				echo "RG: " . ($umProf["rg"]) . "</br>";
+				echo "CPF: " . ($umProf["cpf"]) . "</br>";
+				echo "Endereço: " . ($umProf["endereco"]) . "</br>";
+				echo "Telefone: " . ($umProf["telefone"]) . "</br>";
+				echo "Celular: " . ($umProf["celular"]) . "</br>";
+				echo "E-mail: " . ($umProf["email"]) . "</br>";
+				echo "Instrumento: " . ($umProf["instrumento"]) . "</br>";
+				echo "Formação Acadêmica: " . ($umProf["formacao"]) . "</br>";
+				echo "Preferências: " . ($umProf["preferencias"]) . "</br>";
+				echo "</br>";
+				}
+			} catch(PDOException $e){
+				var_dump($e) ;
 		}
+	}
 
 
 	//CRUD de Aula-----------------------------------------------------//
@@ -436,12 +434,12 @@
 	}
 	
 	public function deleteItem($itemId){
-			$item = new Item();
-			$item->select($itemId);
-			return $item->delete();
+		$item = new Item();
+		$item->select($itemId);
+		return $item->delete();
 	}
 	
-	public function updateItem	($itemId, $link, $tipo, $professorId, $alunoId){	
+	public function updateItem($itemId, $link, $tipo, $professorId, $alunoId){	
 		$item = new Item();
 		$item->select($itemId);		
 	
@@ -457,27 +455,39 @@
 	
 	public function getItens($itens){
 		try{
-				$itens->execute();
+			$itens->execute();
 
-				$todositens = $itens->fetchAll();
+			$todositens = $itens->fetchAll();
 
-
-				foreach($todositens as $umItem){
-					echo "ID: " . ($umItem["eventoId"]) . "</br>";
-					echo "Link: " . ($umItem["link"]) . "</br>";
-					echo "Tipo: " . ($umItem["tipo"]) . "</br>";
-					echo "ID do aluno: " . ($umItem["alunoId"]) . "</br>";
-					echo "ID do professor: " . ($umItem["professorId"]) . "</br>";
-					echo "</br>";
-					}
-				} catch(PDOException $e){
-					var_dump($e) ;
-			}			
+			foreach($todositens as $umItem){
+				echo "ID: " . ($umItem["eventoId"]) . "</br>";
+				echo "Link: " . ($umItem["link"]) . "</br>";
+				echo "Tipo: " . ($umItem["tipo"]) . "</br>";
+				echo "ID do aluno: " . ($umItem["alunoId"]) . "</br>";
+				echo "ID do professor: " . ($umItem["professorId"]) . "</br>";
+				echo "</br>";
+			}
+		} catch(PDOException $e){
+			var_dump($e) ;
+		}			
 	}
-	
-		
-		
-	
+
+	//Login ----------------------------------------------
+	public function login($username, $hash){
+		$login = new Login();
+		$login->setUsername($username);
+		$login->setHash($hash);
+
+		return $login->SignIn();
+	}
+
+	public function logout(){
+		$login = new Login();
+		$login->SignOut();
+	}
+
+	public function checkLogin(){
+		$login = new Login();
+		return $login->checkSession();
+	}
 }
-	
-?>

@@ -29,6 +29,28 @@ button{
   color: #fff !important;
 }
 
+
+
+.botaologin{
+  min-height: 0px;
+  min-width: 0px;
+  line-height: 16px;
+  border-width: 2px;
+  margin: 20px;
+  border-radius: 500px;
+  padding: 12px 51px;
+  letter-spacing: 0px;
+  font-size: 12px;
+  border: 5px solid #ddd;
+  background: #03acdc;
+  border-color: #03acdc;
+  text-decoration: none !important;
+  color: #fff !important;
+}
+
+
+
+
 a {
   color: #03ACDC;
   text-decoration: none;
@@ -85,4 +107,74 @@ a:hover, a:active {
 .repositorio .nomeItem {
   text-align: left;
   padding-left: 1em;
+}
+
+
+
+
+
+
+/* Shoko */
+.input--shoko {
+  overflow: hidden;
+  padding-bottom: 2.5em;
+  color: black !important;
+}
+
+.input__field--shoko {
+  padding: 0;
+  margin-top: 1.2em;
+  width: 100%;
+  background: transparent;
+  color: black !important;
+  font-size: 1.55em;
+}
+
+.input__label--shoko {
+  
+  position: absolute;
+  top: 2em;
+  left: 0;
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: black !important;
+  pointer-events: none;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transition: -webkit-transform 0.3s 0.1s, color 1s;
+  transition: transform 0.3s 0.1s, color 1s;
+  -webkit-transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
+  transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
+}
+
+.graphic--shoko {
+  stroke: black !important;
+  pointer-events: none;
+  stroke-width: 1px;
+  top: 1.25em;
+  bottom: 0px;
+  height: 3.275em;
+  -webkit-transition: -webkit-transform 0.7s, stroke 0.7s;
+  transition: transform 0.7s, stroke 0.7s;
+  -webkit-transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
+  transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
+} 
+
+.input__field--shoko:focus + .input__label--shoko,
+.input--filled .input__label--shoko {
+  color: black !important;
+  -webkit-transform: translate3d(0, 3.5em, 0) scale3d(0.85, 0.85, 1);
+  transform: translate3d(0, 3.5em, 0) scale3d(0.85, 0.85, 1);
+}
+
+.input__field--shoko:focus ~ .graphic--shoko,
+.input--filled .graphic--shoko {
+  stroke: black !important;
+  -webkit-transform: translate3d(-66.6%, 0, 0);
+  transform: translate3d(-66.6%, 0, 0);
+  color: black;
 }

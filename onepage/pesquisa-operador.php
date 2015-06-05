@@ -6,18 +6,14 @@ require_once "php/conexao.php";
 
 $interface = new Aplicacao();
 
-$profaluno = $_POST['profaluno'];
-$nome = $_POST['nome'];
-$rg = $_POST['rg'];
-$cpf = $_POST['cpf'];
-$telefone = $_POST['tel'];
-$nascimento = $_POST['datanasc'];
-$celular = $_POST['cel'];
-$endereco = $_POST['endereco'];
-$email = $_POST['email'];
-$instrumento = $_POST['instrumento'];
-$formacao = $_POST['formacao'];
-$preferencia = $_POST['preferencia'];
+
+$nome = $_POST['pesquisa'];
+
+
+
+
+
+
 
 if ($profaluno == "Aluno"){
 	$interface->insertAluno($nome, $nascimento, $rg, $cpf, $endereco, $telefone, $celular, $email);

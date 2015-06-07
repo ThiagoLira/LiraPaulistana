@@ -32,6 +32,12 @@ if(!$interface->checkLogin()){
     <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
 
+    <script src="../default/js/jquery.js"></script>
+    <script type="text/javascript" src="js/AnimateList.js" ></script>
+     
+
+
+
     <link href="css/operador.css" rel="stylesheet">
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,400italic,600italic,700,700italic,900' rel='stylesheet' type='text/css'>
@@ -43,11 +49,12 @@ if(!$interface->checkLogin()){
 		<section id="areaUsuario" class="section-white">
             <h1 class="tituloPagina">Meu Painel</h1>
             <div class="divider"></div>
-            <p>Bem-vindo.</p>
+            <p>Bem-vindo:</p>
+            <p id="NomeUsuario">Fulano</p>
             <ul class="listaOp">          
                 <li><a href="paginaCadastro.php">Cadastro</a></li>
                 <li><a href="pesquisa-alterar.php">Alteração/Pesquisar</a></li>
-                <li>Deletar</li>
+                <li><a href="">Deletar</a></li>
                 <li><a href="repositorio.php">Repositório</a></li>
                 <li><a href="logout.php">Sair</a></li>
             </ul>

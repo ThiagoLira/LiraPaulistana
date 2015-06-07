@@ -45,8 +45,8 @@ if(!$interface->checkLogin()){
             <div class="divider"></div>
             <p>Bem-vindo.</p>
             <ul class="listaOp">          
-                <li><a href="login-aluno.html">Cadastro</a></li>
-                <li><a href="pesquisa-alterar.html">Alteração/Pesquisar</a></li>
+                <li><a href="paginaCadastro.php">Cadastro</a></li>
+                <li><a href="pesquisa-alterar.php">Alteração/Pesquisar</a></li>
                 <li>Deletar</li>
                 <li><a href="repositorio.php">Repositório</a></li>
                 <li><a href="logout.php">Sair</a></li>

@@ -33,11 +33,12 @@ if($interface->checkLogin()){
     <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
 
-    <link href="css/operador.css" rel="stylesheet">
+    <link href="css/operador.css" rel="stylesheet" type='text/css'>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,400italic,600italic,700,700italic,900' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="css/shoko.css" />
+
+    
 
 
 
@@ -55,16 +56,16 @@ if($interface->checkLogin()){
             }
             ?>
             <form method="POST" action="login.php">
-                  <span class="input input--shoko">
-                                                            <input name = "user" class="input__field input__field--shoko" type="text" id="user" required />
-                                                                     <label class="input__label input__label--shoko" for="input-4">
+                 <span class="input input--shoko">
+                                                                        <input class="input__field input__field--shoko" type="text" id="user" name = "user"/>
+                                                                        <label class="input__label input__label--shoko" for="input-4">
                                                                             <span class="input__label-content input__label-content--shoko">Usuario</span>
-                                                                     </label>
-                                                                     <svg class="graphic graphic--shoko" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
-                                                                        <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
-                                                                        <path d="M0,2.5c0,0,298.666,0,399.333,0C448.336,2.5,513.994,13,597,13c77.327,0,135-10.5,200.999-10.5c95.996,0,402.001,0,402.001,0"/>
-                                                                    </svg>
-                                </span>
+                                                                        </label>
+                                                                        <svg class="graphic graphic--shoko" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+                                                                            <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+                                                                            <path d="M0,2.5c0,0,298.666,0,399.333,0C448.336,2.5,513.994,13,597,13c77.327,0,135-10.5,200.999-10.5c95.996,0,402.001,0,402.001,0"/>
+                                                                        </svg>
+                                                    </span>
 
                                 <span class="input input--shoko">
                                                             <input name = "pass" class="input__field input__field--shoko" type="text" id="pass" required />

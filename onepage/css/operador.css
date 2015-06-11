@@ -31,6 +31,7 @@ button{
   border-color: #03acdc;
   text-decoration: none !important;
   color: #fff !important;
+  cursor: pointer;
 }
 
 .selectCadastro {
@@ -129,9 +130,70 @@ a:hover, a:active {
   padding: 0.5em 0.5em 0.25em 0.5em;
 }
 
+.repositorio img {
+  width: 24px;
+  height: 24px;
+}
+
 .repositorio .nomeItem {
   text-align: left;
   padding-left: 1em;
+}
+
+.adicionarItem{
+  width: 50%;
+  margin: 2em auto;
+}
+
+.adicionarItem input[type=text] {
+  width: 80%;
+  margin: 0.25em 0em;
+  font-family: "Baron Neue",sans-serif;
+  font-size: 1em;
+  padding: 0.25em;
+}
+
+.adicionarItem input[type=file] {
+  width: 80%;
+  margin: 0.25em 0em;
+  font-family: "Baron Neue",sans-serif;
+  font-size: 0.75em;
+  padding: 0.25em 0em;
+}
+
+.adicionarItem select {
+  margin: 0.25em 0em;
+  font-family: "Baron Neue",sans-serif;
+  font-size: 1em;
+  padding: 0.25em;
+}
+
+.adicionarItem input::-webkit-input-placeholder {
+  font-family: "Baron Neue",sans-serif;
+  opacity: 0.75;
+}
+
+.adicionarItem input:-moz-placeholder {
+  font-family: "Baron Neue",sans-serif;
+  opacity: 0.75; 
+}
+
+.adicionarItem input::-moz-placeholder {
+  font-family: "Baron Neue",sans-serif;
+  opacity: 0.75;  
+}
+
+.adicionarItem input:-ms-input-placeholder {
+  font-family: "Baron Neue",sans-serif; 
+  opacity: 0.75;
+}
+
+.erro {
+  color: red;
+}
+
+.msg {
+  color: green;
 }
 
 

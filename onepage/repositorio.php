@@ -56,12 +56,12 @@ if(!$interface->checkLogin()){
                     <tr>
                         <td>Vídeo</td>
                         <td class="nomeItem"><a href="#">Nome do vídeo</a></td>
-                        <td><a href="#">Deletar</a></td>
+                        <td><a href="#"><img src="images/delete.png" alt="Deletar"></a></td>
                     </tr>
                     <tr>
                         <td>Arquivo</td>
                         <td class="nomeItem"><a href="#">Nome do arquivo</a></td>
-                        <td><a href="#">Deletar</a></td>
+                        <td><a href="#"><img src="images/delete.png" alt="Deletar"></a></td>
                     </tr>
                 </tbody>
             </table>

@@ -23,7 +23,7 @@ if(!$interface->checkLogin()){
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Lira Paulistana | Área do usuário</title>
+    <title>Lira Paulistana | Área do usuário | Índice de repositórios</title>
 
     <!-- Favicons
     ================================================== -->
@@ -31,12 +31,6 @@ if(!$interface->checkLogin()){
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
-
-    <script src="../default/js/jquery.js"></script>
-    <script type="text/javascript" src="js/AnimateList.js" ></script>
-     
-
-
 
     <link href="css/operador.css" rel="stylesheet">
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -46,19 +40,21 @@ if(!$interface->checkLogin()){
 
 <body>
     <div id="wrapper">
-		<section id="areaUsuario" class="section-white">
-            <h1 class="tituloPagina">Meu Painel</h1>
+		<section id="visualizarRepositorio" class="section-white">
+            <h1 class="tituloPagina">Índice de repositórios</h1>
             <div class="divider"></div>
-            <p>Bem-vindo:</p>
-            <p id="NomeUsuario">Fulano</p>
-            <ul class="listaOp">          
-                <li><a href="paginaCadastro.php">Cadastro</a></li>
-                <li><a href="pesquisa-alterar.php">Alteração/Pesquisar</a></li>
-                <li><a href="">Deletar</a></li>
-                <li><a href="repositorio.php">Repositório</a></li>
-                <li><a href="indiceRepositorios.php">Índice de repositórios</a></li>
-                <li><a href="logout.php">Sair</a></li>
-            </ul>
+            <p>Administre os repositórios de alunos.</p>
+            <table class="repositorio">
+                <thead>
+                    <tr>
+                        <th class="nomeItem">Nome</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $interface->alunosDeUmProfessor($_SESSION['usuarioId']); ?>
+                </tbody>
+            </table>
+            <p><a href="meuPainel.php">Voltar a meu painel.</a></p>
         </section>
     </div>
 </body>

@@ -68,7 +68,7 @@ if($interface->checkLogin()){
                                                     </span>
 
                                 <span class="input input--shoko">
-                                                            <input name = "pass" class="input__field input__field--shoko" type="text" id="pass" required />
+                                                            <input name = "pass" class="input__field input__field--shoko" type="password" id="pass" required />
                                                                      <label class="input__label input__label--shoko" for="input-4">
                                                                             <span class="input__label-content input__label-content--shoko">Senha</span>
                                                                      </label>

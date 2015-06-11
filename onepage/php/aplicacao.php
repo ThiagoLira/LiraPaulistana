@@ -493,4 +493,65 @@
 		$login = new Login();
 		return $login->checkSession();
 	}
+
+	//Alunos de um professor----------------------------------
+	public function alunosDeUmProfessor($id){
+		try{
+			global $db;
+
+			$select = $db->prepare("SELECT Usuario.usuarioId, Usuario.nome FROM TemAula INNER JOIN Aluno ON TemAula.alunoId = Aluno.usuarioId INNER JOIN Usuario ON Aluno.usuarioId = Usuario.usuarioId WHERE TemAula.professorId = :id");
+			$select->bindParam(":id", $id, PDO::PARAM_INT);
+			$select->execute();
+
+			$alunosDeUmProfessor = $select->fetchAll();
+
+			foreach($alunosDeUmProfessor as $umAluno){
+				echo '<tr>
+                        <td class="nomeItem"><a href="administrarRepositorio.php?alunoId='.$umAluno['usuarioId'].'">'.$umAluno['nome'].'</a></td>
+                    </tr>';
+			}
+		} catch(PDOException $e){
+			var_dump($e) ;
+		}
+	}
+
+	//Itens de um aluno, visão do professor----------------------------------
+	public function itensProfessor($idAluno){
+		try{
+			global $db;
+			
+			$select = $db->prepare("SELECT Item.itemId, Item.nome, Item.link, Item.tipo FROM Item INNER JOIN Aluno ON Item.alunoId = Aluno.usuarioId WHERE Item.alunoId = :id");
+			$select->bindParam(":id", $idAluno, PDO::PARAM_INT);
+			$select->execute();
+
+			$itensProfessor = $select->fetchAll();
+
+			foreach($itensProfessor as $umItem){
+				echo '<tr>
+                        <td>'.$umItem['tipo'].'</td>
+                        <td class="nomeItem"><a href="'.$umItem['link'].'">'.$umItem['nome'].'</a></td>
+                        <td><a href="deletarItem?itemId='.$umItem['itemId'].'"><img src="images/delete.png" alt="Deletar"></a></td>
+                    </tr>';
+			}
+		} catch(PDOException $e){
+			var_dump($e) ;
+		}
+	}
+
+	//Nome
+	public function nome($id){
+		try{
+			global $db;
+			
+			$select = $db->prepare("SELECT Usuario.nome FROM Usuario WHERE Usuario.usuarioId = :id");
+			$select->bindParam(":id", $id, PDO::PARAM_INT);
+			$select->execute();
+
+			$umUser = $select->fetch(PDO::FETCH_ASSOC);
+
+			echo $umUser['nome'];
+		} catch(PDOException $e){
+			var_dump($e) ;
+		}
+	}
 }

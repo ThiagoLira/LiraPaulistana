@@ -50,7 +50,7 @@ if(!$interface->checkLogin()){
             <h1 class="tituloPagina">Meu Painel</h1>
             <div class="divider"></div>
             <p>Bem-vindo:</p>
-            <p id="NomeUsuario">Fulano</p>
+            <p id="NomeUsuario"><?php $interface->nome($_SESSION['usuarioId']) ?></p>
             <ul class="listaOp">          
                 <li><a href="paginaCadastro.php">Cadastro</a></li>
                 <li><a href="pesquisa-alterar.php">Alteração/Pesquisar</a></li>

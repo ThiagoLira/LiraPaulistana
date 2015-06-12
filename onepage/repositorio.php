@@ -53,16 +53,7 @@ if(!$interface->checkLogin()){
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Vídeo</td>
-                        <td class="nomeItem"><a href="#">Nome do vídeo</a></td>
-                        <td><a href="#"><img src="images/delete.png" alt="Deletar"></a></td>
-                    </tr>
-                    <tr>
-                        <td>Arquivo</td>
-                        <td class="nomeItem"><a href="#">Nome do arquivo</a></td>
-                        <td><a href="#"><img src="images/delete.png" alt="Deletar"></a></td>
-                    </tr>
+                    <?php $interface->itensAluno($_SESSION['usuarioId']) ?>
                 </tbody>
             </table>
             <p><a href="meuPainel.php">Voltar a meu painel.</a></p>

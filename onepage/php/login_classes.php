@@ -31,7 +31,7 @@ class Login {
 		global $db;
 
 		try {
-			$login = $db->prepare("SELECT *  FROM Login where username = :username AND hash = :hash") or die(mysql_error());
+			$login = $db->prepare("SELECT * FROM Login where username = :username AND hash = :hash") or die(mysql_error());
 			$login->bindParam(":username", $this->getUsername());
 			$login->bindParam(":hash", $this->getHash());
 
@@ -39,7 +39,7 @@ class Login {
 
 			$row = $login->fetch(PDO::FETCH_ASSOC);
 
-			if(count($row) > 0) {
+			if($row) {
 				$_SESSION['login'] = true;
 				$_SESSION['username'] = $row['username'];
 				$_SESSION['usuarioId'] = $row['usuarioId'];

@@ -530,7 +530,7 @@
 			global $db;
 			global $dbxClient;
 			
-			$select = $db->prepare("SELECT Item.itemId, Item.nome, Item.link, Item.tipo FROM Item INNER JOIN Aluno ON Item.alunoId = Aluno.usuarioId WHERE Item.alunoId = :id");
+			$select = $db->prepare("SELECT Item.itemId, Item.nome, Item.link, Item.tipo FROM Item WHERE Item.alunoId = :id");
 			$select->bindParam(":id", $idAluno, PDO::PARAM_INT);
 			$select->execute();
 
@@ -553,6 +553,34 @@
 		}
 	}
 
+	//Itens de um aluno, visão do aluno----------------------------------
+	public function itensAluno($idAluno){
+		try{
+			global $db;
+			global $dbxClient;
+			
+			$select = $db->prepare("SELECT Item.itemId, Item.nome, Item.link, Item.tipo FROM Item WHERE Item.alunoId = :id");
+			$select->bindParam(":id", $idAluno, PDO::PARAM_INT);
+			$select->execute();
+
+			$itensAluno = $select->fetchAll();
+
+			foreach($itensAluno as $umItem){
+				echo '<tr>
+                        <td>'.$umItem['tipo'].'</td>';
+                if($umItem["tipo"] == "Arquivo"){
+                	echo '<td class="nomeItem"><a href="'.$dbxClient->createShareableLink($umItem["link"]).'" target="_blank">'.$umItem['nome'].'</a></td>';
+                }
+                else {
+                	echo '<td class="nomeItem"><a href="'.$umItem['link'].'" target="_blank">'.$umItem['nome'].'</a></td>';
+                }
+                echo '</tr>';
+			}
+		} catch(PDOException $e){
+			var_dump($e) ;
+		}
+	}
+
 	//Nome
 	public function nome($id){
 		try{
@@ -567,6 +595,75 @@
 			echo $umUser['nome'];
 		} catch(PDOException $e){
 			var_dump($e) ;
+		}
+	}
+
+	//Tipo de usuário---------------------------------
+	public function isAdministrador($id) {
+		try{
+			global $db;
+			
+			$select = $db->prepare("SELECT * FROM Administrador WHERE Administrador.usuarioId = :id");
+			$select->bindParam(":id", $id, PDO::PARAM_INT);
+			$select->execute();
+
+			$result = $select->fetchAll();
+
+			if(count($result) > 0) return true;
+			else return false;
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+
+	public function isOperador($id) {
+		try{
+			global $db;
+			
+			$select = $db->prepare("SELECT * FROM Operador WHERE Operador.usuarioId = :id");
+			$select->bindParam(":id", $id, PDO::PARAM_INT);
+			$select->execute();
+
+			$result = $select->fetchAll();
+
+			if(count($result) > 0) return true;
+			else return false;
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+
+	public function isProfessor($id) {
+		try{
+			global $db;
+			
+			$select = $db->prepare("SELECT * FROM Professor WHERE Professor.usuarioId = :id");
+			$select->bindParam(":id", $id, PDO::PARAM_INT);
+			$select->execute();
+
+			$result = $select->fetchAll();
+
+			if(count($result) > 0) return true;
+			else return false;
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+
+	public function isAluno($id) {
+		try{
+			global $db;
+			
+			$select = $db->prepare("SELECT * FROM Aluno WHERE Aluno.usuarioId = :id");
+			$select->bindParam(":id", $id, PDO::PARAM_INT);
+			$select->execute();
+
+			$result = $select->fetchAll();
+
+			if(count($result) > 0) return true;
+			else return false;
+		} catch(PDOException $e){
+			return false;
 		}
 	}
 }

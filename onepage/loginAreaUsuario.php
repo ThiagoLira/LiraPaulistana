@@ -51,7 +51,7 @@ if($interface->checkLogin()){
             <div class="divider"></div>
             <p>Digite nome de usuário e senha para ter acesso seu painel de usuário.</p>
             <?php if(isset($_SESSION['erro']) && $_SESSION['erro'] != NULL) {
-                echo "<p>".$_SESSION['erro']."</p>";
+                echo "<p class='erro'>".$_SESSION['erro']."</p>";
                 $_SESSION['erro'] = NULL;
             }
             ?>

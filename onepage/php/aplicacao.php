@@ -666,4 +666,59 @@
 			return false;
 		}
 	}
+
+	//Todos os alunos-------------------------------
+	public function todosAlunos() {
+		try{
+			global $db;
+			
+			$select = $db->prepare("SELECT * FROM Usuario INNER JOIN Aluno WHERE Usuario.usuarioId = Aluno.usuarioId");
+			$select->execute();
+
+			$todosAlunos = $select->fetchAll();
+
+			foreach($todosAlunos as $umAluno){
+				echo '<tr>';
+				echo '<td>'.$umAluno['nome'].'</td>';
+				echo '<td>'.$umAluno['dataNascimento'].'</td>';
+				echo '<td>'.$umAluno['rg'].'</td>';
+				echo '<td>'.$umAluno['cpf'].'</td>';
+				echo '<td>'.$umAluno['telefone'].'</td>';
+				echo '<td>'.$umAluno['celular'].'</td>';
+				echo '<td>'.$umAluno['email'].'</td>';
+				echo '</tr>';
+			}
+		} catch(PDOException $e){
+			var_dump($e);
+		}
+	}
+
+	//Todos os professores-------------------------------
+	public function todosProfessores() {
+		try{
+			global $db;
+			
+			$select = $db->prepare("SELECT * FROM Usuario INNER JOIN Professor WHERE Usuario.usuarioId = Professor.usuarioId");
+			$select->execute();
+
+			$todosProfessores = $select->fetchAll();
+
+			foreach($todosProfessores as $umAluno){
+				echo '<tr>';
+				echo '<td>'.$umAluno['nome'].'</td>';
+				echo '<td>'.$umAluno['instrumento'].'</td>';
+				echo '<td>'.$umAluno['formacao'].'</td>';
+				echo '<td>'.$umAluno['preferencias'].'</td>';
+				echo '<td>'.$umAluno['dataNascimento'].'</td>';
+				echo '<td>'.$umAluno['rg'].'</td>';
+				echo '<td>'.$umAluno['cpf'].'</td>';
+				echo '<td>'.$umAluno['telefone'].'</td>';
+				echo '<td>'.$umAluno['celular'].'</td>';
+				echo '<td>'.$umAluno['email'].'</td>';
+				echo '</tr>';
+			}
+		} catch(PDOException $e){
+			var_dump($e);
+		}
+	}
 }

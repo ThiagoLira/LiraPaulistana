@@ -23,7 +23,7 @@ if(!$interface->checkLogin()){
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Lira Paulistana | Área do usuário</title>
+    <title>Lira Paulistana | Área do usuário | Lista de alunos</title>
 
     <!-- Favicons
     ================================================== -->
@@ -32,37 +32,56 @@ if(!$interface->checkLogin()){
     <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
 
-    <script src="../default/js/jquery.js"></script>
-    <script type="text/javascript" src="js/AnimateList.js" ></script>
-     
-
-
-
+    <link href="css/jquery.dataTables_themeroller.css" rel="stylesheet">
+    <link href="css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="css/dataTables.tableTools.min.css" rel="stylesheet">
     <link href="css/operador.css" rel="stylesheet">
+
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,400italic,600italic,700,700italic,900' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+    <script src="../default/js/jquery.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.tableTools.min.js"></script>
 </head>
 
 <body>
     <div id="wrapper">
-		<section id="areaUsuario" class="section-white">
-            <h1 class="tituloPagina">Meu Painel</h1>
+		<section id="listaAlunos" class="section-white">
+            <h1 class="tituloPagina">Lista de alunos</h1>
             <div class="divider"></div>
-            <p>Bem-vindo:</p>
-            <p id="NomeUsuario"><?php $interface->nome($_SESSION['usuarioId']) ?></p>
-            <ul class="listaOp">          
-                <li><a href="paginaCadastro.php">Cadastro</a></li>
-                <li><a href="pesquisa-alterar.php">Alteração/Pesquisar</a></li>
-                <li><a href="">Deletar</a></li>
-                <li><a href="listaDeAlunos.php">Lista de alunos</a></li>
-                <li><a href="listaDeProfessores.php">Lista de professores</a></li>
-                <li><a href="repositorio.php">Repositório</a></li>
-                <li><a href="indiceRepositorios.php">Índice de repositórios</a></li>
-                <li><a href="logout.php">Sair</a></li>
-            </ul>
+            <p>Veja as informações dos alunos aqui.</p>
+            <table id="verTodosAlunos">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Data de nascimento</th>
+                        <th>RG</th>
+                        <th>CPF</th>
+                        <th>Telefone</th>
+                        <th>Celular</th>
+                        <th>E-mail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $interface->todosAlunos() ?>
+                </tbody>
+            </table>
+            <p><a href="meuPainel.php">Voltar a meu painel.</a></p>
         </section>
     </div>
 </body>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#verTodosAlunos').dataTable({
+            "dom": 'T<"clear">lfrtip',
+            "tableTools": {
+                "sSwfPath": "/swf/copy_csv_xls_pdf.swf"
+            }
+        });
+    });
+</script>
 
 </html>

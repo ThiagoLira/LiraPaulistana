@@ -109,6 +109,7 @@
 				$umItem = $select->fetch(PDO::FETCH_ASSOC);
 
 				if(count($umItem)>0){
+					$this->setId($umItem['itemId']);
 					$this->setNome($umItem['nome']);
 					$this->setLink($umItem['link']);
 					$this->setTipo($umItem['tipo']);
@@ -127,7 +128,7 @@
 			try {
 			global $db;			
 			
-			$delete = $db->prepare("DELETE FROM Evento WHERE itemId = :id");
+			$delete = $db->prepare("DELETE FROM Item WHERE itemId = :id");
 			$delete->bindParam(":id", $this->getId(), PDO::PARAM_INT);
 			$delete->execute();
 

@@ -3,8 +3,17 @@
 	require_once "evento_classes.php";
 	require_once "repositorio_classes.php";
 	require_once "login_classes.php";
-	
+	require_once "dropbox-sdk/Dropbox/autoload.php";
+	use \Dropbox as dbx;
 
+	$appInfo = dbx\AppInfo::loadFromJsonFile("config.json");
+	$webAuth = new dbx\WebAuthNoRedirect($appInfo, "PHP-Example/1.0");
+
+	$authorizeUrl = $webAuth->start();
+	$accessToken = "Fqjo92WehEAAAAAAAAAACOkTKMu5NYdiGR37SR2wYmjSBFRizz6FKCgO4DXwFJQn";
+
+	$dbxClient = new dbx\Client($accessToken, "PHP-Example/1.0");
+	
 	class Aplicacao {
 		public function teste(){
 			echo "este teste eh insano";		
@@ -431,7 +440,7 @@
 
 		$item->insert();
 		
-		echo "Informações sobre Item adicionadas com sucesso";
+		//echo "Informações sobre Item adicionadas com sucesso";
 	}
 	
 	public function deleteItem($itemId){
@@ -519,6 +528,7 @@
 	public function itensProfessor($idAluno){
 		try{
 			global $db;
+			global $dbxClient;
 			
 			$select = $db->prepare("SELECT Item.itemId, Item.nome, Item.link, Item.tipo FROM Item INNER JOIN Aluno ON Item.alunoId = Aluno.usuarioId WHERE Item.alunoId = :id");
 			$select->bindParam(":id", $idAluno, PDO::PARAM_INT);
@@ -528,9 +538,14 @@
 
 			foreach($itensProfessor as $umItem){
 				echo '<tr>
-                        <td>'.$umItem['tipo'].'</td>
-                        <td class="nomeItem"><a href="'.$umItem['link'].'">'.$umItem['nome'].'</a></td>
-                        <td><a href="deletarItem?itemId='.$umItem['itemId'].'"><img src="images/delete.png" alt="Deletar"></a></td>
+                        <td>'.$umItem['tipo'].'</td>';
+                if($umItem["tipo"] == "Arquivo"){
+                	echo '<td class="nomeItem"><a href="'.$dbxClient->createShareableLink($umItem["link"]).'" target="_blank">'.$umItem['nome'].'</a></td>';
+                }
+                else {
+                	echo '<td class="nomeItem"><a href="'.$umItem['link'].'" target="_blank">'.$umItem['nome'].'</a></td>';
+                }
+                echo '<td><a href="deletarItem.php?itemId='.$umItem['itemId'].'"><img src="images/delete.png" alt="Deletar"></a></td>
                     </tr>';
 			}
 		} catch(PDOException $e){

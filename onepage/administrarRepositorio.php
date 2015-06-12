@@ -61,7 +61,7 @@ if(!isset($_GET['alunoId'])){
             }
             ?>
             <p><a class="addItem" href="#">Adicionar item.</a></p>
-            <form class="adicionarItem" method="post" action="adicionarItem.php">
+            <form class="adicionarItem" method="post" action="adicionarItem.php" enctype="multipart/form-data">
                 <input id="alunoId" type="hidden" name="alunoId" value="<?php echo $_GET['alunoId'] ?>">
                 <input id="professorId" type="hidden" name="professorId" value="<?php echo $_SESSION['usuarioId'] ?>">
                 <select id="tipo" name="tipo" required>

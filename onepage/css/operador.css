@@ -30,7 +30,7 @@ button{
   background: #03acdc;
   border-color: #03acdc;
   text-decoration: none !important;
-  color: #fff !important;
+  color: #fff;
   cursor: pointer;
 }
 
@@ -196,6 +196,80 @@ a:hover, a:active {
   color: green;
 }
 
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #B9C1CA;
+  opacity: 0.5;
+  display: none;
+  z-index: 40;
+}
+
+#eventoInfo {
+  position: fixed;
+  width: 50%;
+  height: auto;
+  top: 10%;
+  left: 25%;
+  padding: 2em;
+  background-color: #FFFFFF;
+  display: none;
+  z-index: 41;
+}
+
+.adicionarEvento{
+  width: 50%;
+  margin: 2em auto;
+}
+
+.adicionarEvento fieldset {
+  width: 100%;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.adicionarEvento fieldset input[type=text] {
+  width: 80%;
+  margin: 0.25em 0em;
+  font-family: "Baron Neue",sans-serif;
+  font-size: 1em;
+  padding: 0.25em;
+}
+
+.adicionarEvento fieldset select {
+  display: table;
+  width: 83%;
+  margin: 0.25em auto;
+  font-family: "Baron Neue",sans-serif;
+  font-size: 1em;
+  padding: 0.25em;
+  background: none;
+  border: 1px solid #B9C1CA;
+}
+
+.adicionarEvento fieldset input::-webkit-input-placeholder {
+  font-family: "Baron Neue",sans-serif;
+  opacity: 0.75;
+}
+
+.adicionarEvento fieldset input:-moz-placeholder {
+  font-family: "Baron Neue",sans-serif;
+  opacity: 0.75; 
+}
+
+.adicionarEvento fieldset input::-moz-placeholder {
+  font-family: "Baron Neue",sans-serif;
+  opacity: 0.75;  
+}
+
+.adicionarEvento fieldset input:-ms-input-placeholder {
+  font-family: "Baron Neue",sans-serif; 
+  opacity: 0.75;
+}
 
 
 /* Shoko */

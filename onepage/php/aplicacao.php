@@ -387,7 +387,7 @@
 	
 	public function deleteEventoMusical($eventoId){
 			$eventoMusical = new EventoMusical();
-			$eventMusical->select($eventoId);
+			$eventoMusical->select($eventoId);
 			return $eventoMusical->delete();
 	}
 	
@@ -717,6 +717,213 @@
 				echo '<td>'.$umAluno['email'].'</td>';
 				echo '</tr>';
 			}
+		} catch(PDOException $e){
+			var_dump($e);
+		}
+	}
+
+	//Feed de eventos no calendário--------------------------------
+	public function todosEventos() {
+		try{
+			global $db;
+			
+			$select = $db->prepare("SELECT Evento.eventoId, Evento.data, Evento.horario, Aula.instrumento, Aula.nivel, Aula.sala, Aula.tipo, Aula.presenca, Aula.alunoId, Aula.professorId, A.nome AS nomeAluno, P.nome AS nomeProfessor 
+				FROM Evento INNER JOIN Aula ON Aula.eventoId = Evento.eventoId LEFT OUTER JOIN Usuario A ON Aula.alunoId = A.usuarioId LEFT OUTER JOIN Usuario P ON Aula.professorId = P.usuarioId");
+			$select->execute();
+
+			$todasAulas = $select->fetchAll();
+
+			$select = $db->prepare("SELECT * FROM Evento INNER JOIN EventoMusical ON EventoMusical.eventoId = Evento.eventoId");
+			$select->execute();
+
+			$todosEventosMusicais = $select->fetchAll();
+
+			$feed = array();
+
+			foreach($todasAulas as $umaAula){
+				$aux = array();
+
+				$aux['id'] = $umaAula['eventoId'];
+				$aux['title'] = $umaAula['instrumento'].": ".$umaAula['nomeAluno'];
+				$aux['allDay'] = false;
+				$aux['start'] = $umaAula['data'];
+				$aux['backgroundColor'] = "#03ACDC";
+				$aux['borderColor'] = "#03ACDC";
+
+				$aux['tipo'] = "Aula";
+				$aux['data'] = $umaAula['data'];
+				$aux['nomeAluno'] = $umaAula['nomeAluno'];
+				$aux['alunoId'] = $umaAula['alunoId'];
+				$aux['nomeProfessor'] = $umaAula['nomeProfessor'];
+				$aux['professorId'] = $umaAula['professorId'];
+				$aux['instrumento'] = $umaAula['instrumento'];
+				$aux['nivel'] = $umaAula['nivel'];
+				$aux['sala'] = $umaAula['sala'];
+				$aux['tipoAula'] = $umaAula['tipo'];
+				$aux['presenca'] = $umaAula['presenca'];
+
+				$feed[] = $aux;
+			}
+
+			foreach($todosEventosMusicais as $umEventoMusical){
+				$aux = array();
+
+				$aux['id'] = $umEventoMusical['eventoId'];
+				$aux['title'] = $umEventoMusical['nome'];
+				$aux['allDay'] = false;
+				$aux['start'] = $umEventoMusical['data'];
+
+				$aux['backgroundColor'] = "#FFCA28";
+				$aux['borderColor'] = "#FFCA28";
+				$aux['textColor'] = "#000000";
+
+				$aux['tipo'] = "Evento musical";
+				$aux['data'] = $umaAula['data'];
+				$aux['local'] = $umaAula['local'];
+				$aux['descricao'] = $umaAula['descricao'];
+
+				$feed[] = $aux;
+			}
+
+			echo json_encode($feed);
+		} catch(PDOException $e){
+			var_dump($e);
+		}
+	}
+
+	public function eventosProfessor($id) {
+		try{
+			global $db;
+			
+			$select = $db->prepare("SELECT Evento.eventoId, Evento.data, Evento.horario, Aula.instrumento, Aula.nivel, Aula.sala, Aula.tipo, Aula.presenca, Aula.alunoId, Aula.professorId, A.nome AS nomeAluno, P.nome AS nomeProfessor 
+				FROM Evento INNER JOIN Aula ON Aula.eventoId = Evento.eventoId LEFT OUTER JOIN Usuario A ON Aula.alunoId = A.usuarioId LEFT OUTER JOIN Usuario P ON Aula.professorId = P.usuarioId WHERE Aula.professorId = :id");
+			$select->bindParam(":id", $id, PDO::PARAM_INT);
+			$select->execute();
+
+			$minhasAulas = $select->fetchAll();
+
+			$select = $db->prepare("SELECT * FROM Evento INNER JOIN EventoMusical ON EventoMusical.eventoId = Evento.eventoId");
+			$select->execute();
+
+			$todosEventosMusicais = $select->fetchAll();
+
+			$feed = array();
+
+			foreach($minhasAulas as $umaAula){
+				$aux = array();
+
+				$aux['id'] = $umaAula['eventoId'];
+				$aux['title'] = $umaAula['instrumento'].": ".$umaAula['nomeAluno'];
+				$aux['allDay'] = false;
+				$aux['start'] = $umaAula['data'];
+				$aux['backgroundColor'] = "#03ACDC";
+				$aux['borderColor'] = "#03ACDC";
+
+				$aux['tipo'] = "Aula";
+				$aux['data'] = $umaAula['data'];
+				$aux['nomeAluno'] = $umaAula['nomeAluno'];
+				$aux['alunoId'] = $umaAula['alunoId'];
+				$aux['nomeProfessor'] = $umaAula['nomeProfessor'];
+				$aux['professorId'] = $umaAula['professorId'];
+				$aux['instrumento'] = $umaAula['instrumento'];
+				$aux['nivel'] = $umaAula['nivel'];
+				$aux['sala'] = $umaAula['sala'];
+				$aux['tipoAula'] = $umaAula['tipo'];
+				$aux['presenca'] = $umaAula['presenca'];
+
+				$feed[] = $aux;
+			}
+
+			foreach($todosEventosMusicais as $umEventoMusical){
+				$aux = array();
+
+				$aux['id'] = $umEventoMusical['eventoId'];
+				$aux['title'] = $umEventoMusical['nome'];
+				$aux['allDay'] = false;
+				$aux['start'] = $umEventoMusical['data'];
+
+				$aux['backgroundColor'] = "#FFCA28";
+				$aux['borderColor'] = "#FFCA28";
+				$aux['textColor'] = "#000000";
+
+				$aux['tipo'] = "Evento musical";
+				$aux['data'] = $umaAula['data'];
+				$aux['local'] = $umaAula['local'];
+				$aux['descricao'] = $umaAula['descricao'];
+
+				$feed[] = $aux;
+			}
+
+			echo json_encode($feed);
+		} catch(PDOException $e){
+			var_dump($e);
+		}
+	}
+
+	public function eventosAluno($id) {
+		try{
+			global $db;
+			
+			$select = $db->prepare("SELECT Evento.eventoId, Evento.data, Evento.horario, Aula.instrumento, Aula.nivel, Aula.sala, Aula.tipo, Aula.presenca, Aula.alunoId, Aula.professorId, A.nome AS nomeAluno, P.nome AS nomeProfessor 
+				FROM Evento INNER JOIN Aula ON Aula.eventoId = Evento.eventoId LEFT OUTER JOIN Usuario A ON Aula.alunoId = A.usuarioId LEFT OUTER JOIN Usuario P ON Aula.professorId = P.usuarioId WHERE Aula.alunoId = :id");
+			$select->bindParam(":id", $id, PDO::PARAM_INT);
+			$select->execute();
+
+			$minhasAulas = $select->fetchAll();
+
+			$select = $db->prepare("SELECT * FROM Evento INNER JOIN EventoMusical ON EventoMusical.eventoId = Evento.eventoId");
+			$select->execute();
+
+			$todosEventosMusicais = $select->fetchAll();
+
+			$feed = array();
+
+			foreach($minhasAulas as $umaAula){
+				$aux = array();
+
+				$aux['id'] = $umaAula['eventoId'];
+				$aux['title'] = $umaAula['instrumento'].": ".$umaAula['nomeAluno'];
+				$aux['allDay'] = false;
+				$aux['start'] = $umaAula['data'];
+				$aux['backgroundColor'] = "#03ACDC";
+				$aux['borderColor'] = "#03ACDC";
+
+				$aux['tipo'] = "Aula";
+				$aux['data'] = $umaAula['data'];
+				$aux['nomeAluno'] = $umaAula['nomeAluno'];
+				$aux['alunoId'] = $umaAula['alunoId'];
+				$aux['nomeProfessor'] = $umaAula['nomeProfessor'];
+				$aux['professorId'] = $umaAula['professorId'];
+				$aux['instrumento'] = $umaAula['instrumento'];
+				$aux['nivel'] = $umaAula['nivel'];
+				$aux['sala'] = $umaAula['sala'];
+				$aux['tipoAula'] = $umaAula['tipo'];
+				$aux['presenca'] = $umaAula['presenca'];
+
+				$feed[] = $aux;
+			}
+
+			foreach($todosEventosMusicais as $umEventoMusical){
+				$aux = array();
+
+				$aux['id'] = $umEventoMusical['eventoId'];
+				$aux['title'] = $umEventoMusical['nome'];
+				$aux['allDay'] = false;
+				$aux['start'] = $umEventoMusical['data'];
+
+				$aux['backgroundColor'] = "#FFCA28";
+				$aux['borderColor'] = "#FFCA28";
+				$aux['textColor'] = "#000000";
+
+				$aux['tipo'] = "Evento musical";
+				$aux['data'] = $umaAula['data'];
+				$aux['local'] = $umaAula['local'];
+				$aux['descricao'] = $umaAula['descricao'];
+
+				$feed[] = $aux;
+			}
+
+			echo json_encode($feed);
 		} catch(PDOException $e){
 			var_dump($e);
 		}

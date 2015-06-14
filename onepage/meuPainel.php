@@ -57,6 +57,8 @@ if(!$interface->checkLogin()){
                 <li><a href="">Deletar</a></li>
                 <li><a href="listaDeAlunos.php">Lista de alunos</a></li>
                 <li><a href="listaDeProfessores.php">Lista de professores</a></li>
+                <li><a href="administrarCalendario.php">Administrar calendário</a></li>
+                <li><a href="calendario.php">Calendário</a></li>
                 <li><a href="repositorio.php">Repositório</a></li>
                 <li><a href="indiceRepositorios.php">Índice de repositórios</a></li>
                 <li><a href="logout.php">Sair</a></li>

@@ -64,15 +64,16 @@ if(!$interface->checkLogin()){
             ?>
             <p><a class="addEvento" href="#">Adicionar evento.</a></p>
             <form class="adicionarEvento" method="post" action="adicionarEvento.php">
+                <input id="adicionarEvento" name="adicionarEvento" type="hidden" value="true">
             	<fieldset>
-            		<select id="tipoEvento" name="tipoEvento" required>
+            		<select id="tipoEvento" name="tipoEvento">
 	                    <option value="Aula" selected>Aula</option>
 	                    <option value="Evento musical">Evento musical</option>
 	                </select>
-	                <input id="data" type="text" name="data" placeholder="Data" required>
+	                <input id="data" type="text" name="data" placeholder="Data">
             	</fieldset>
                 <fieldset class="tipoAula">
-                	<select id="instrumento" name="instrumento" required>
+                	<select id="instrumento" name="instrumento">
                 		<option value="" selected disabled>Instrumento</option>
                 		<option value="Baixo">Baixo</option>
                 		<option value="Bateria">Bateria</option>
@@ -82,19 +83,19 @@ if(!$interface->checkLogin()){
 	                    <option value="Teclado">Teclado</option>
 	                    <option value="Violão">Violão</option>
                 	</select>
-                	<select id="professor" name="professor" required>
-                		<option value="" selected disabled>Escolha o instrumento</option>
+                	<select id="professor" name="professorId">
+                		<option value="" selected disabled>Escolha o instrumento primeiro</option>
                 	</select>
-                	<select id="aluno" name="aluno" required>
-                		<option value="" selected disabled>Escolha o professor</option>
+                	<select id="aluno" name="alunoId">
+                		<option value="" selected disabled>Escolha o professor primeiro</option>
                 	</select>
-            		<select id="nivel" name="nivel" required>
+            		<select id="nivel" name="nivel">
 	                    <option value="" selected disabled>Nível</option>
 	                    <option value="Iniciante">Iniciante</option>
 	                    <option value="Intermediário">Intermediário</option>
 	                    <option value="Avançado">Avançado</option>
                 	</select>
-                	<select id="sala" name="sala" required>
+                	<select id="sala" name="sala">
 	                    <option value="" selected disabled>Sala</option>
 	                    <option value="1">Sala 1</option>
 	                    <option value="2">Sala 2</option>
@@ -102,19 +103,19 @@ if(!$interface->checkLogin()){
 	                    <option value="4">Sala 4</option>
 	                    <option value="5">Sala 5</option>
                 	</select>
-                	<select id="tipo" name="tipo" required>
+                	<select id="tipo" name="tipo">
 	                    <option value="" selected disabled>Tipo de aula</option>
 	                    <option value="Normal">Normal</option>
 	                    <option value="Reposição">Reposição</option>
                 	</select>
-                	<select id="presenca" name="presenca" required>
+                	<select id="presenca" name="presenca">
 	                    <option value="" selected disabled>Presença</option>
 	                    <option value="1">Sim</option>
 	                    <option value="0">Não</option>
                 	</select>
                 </fieldset>
                 <fieldset class="tipoEventoMusical">
-                	<input id="nome" type="text" name="nome" placeholder="Nome" required>
+                	<input id="nome" type="text" name="nome" placeholder="Nome">
                 	<input id="local" type="text" name="local" placeholder="Local">
                 	<input id="descricao" type="text" name="descricao" placeholder="Descrição">
                 </fieldset>
@@ -135,6 +136,7 @@ if(!$interface->checkLogin()){
 
         $("#wrapper").on('click', '.addEvento', function(event){
             $(".adicionarEvento").slideToggle("slow");
+            $(".adicionarEvento").toggleClass("openForm");
         });
 
         $('#tipoEvento').on('change', function() {
@@ -153,7 +155,7 @@ if(!$interface->checkLogin()){
         });
 
         jQuery('#data').datetimepicker({
-        	format:'d/m/Y H:i:s'
+        	format:'d/m/Y H:i'
         });
 
         $('#calendario').fullCalendar({
@@ -194,7 +196,55 @@ if(!$interface->checkLogin()){
                 }
 
                 $(".overlay, #eventoInfo").show();
+            },
+            dayClick: function(date, jsEvent, view) {
+                $("#data").val(date.format("DD/MM/YYYY HH:mm"));
+                if(!($(".adicionarEvento").hasClass("openForm"))){
+                    $(".adicionarEvento").slideToggle("slow");
+                }
             }
+        });
+
+        $('#instrumento').on('change', function(e) {
+            e.preventDefault();
+
+            var formData = {
+                'verProfessores': true,
+                'instrumento': $('#instrumento option:selected').val()
+            };
+
+            $.ajax({
+                type         : 'POST',
+                url          : 'adicionarEvento.php',
+                data         : formData,
+                error: function(req, err){ console.log('mensagem de erro debug: ' + err); }
+            })
+            .done(function(response) {
+                if(response != null && response.length > 0){
+                    $('#professor').html(response);
+                }
+            });
+        });
+
+        $('#professor').on('change', function(e) {
+            e.preventDefault();
+
+            var formData = {
+                'verAlunos': true,
+                'professorId': $('#professor option:selected').val()
+            };
+
+            $.ajax({
+                type         : 'POST',
+                url          : 'adicionarEvento.php',
+                data         : formData,
+                error: function(req, err){ console.log('mensagem de erro debug: ' + err); }
+            })
+            .done(function(response) {
+                if(response != null && response.length > 0){
+                    $('#aluno').html(response);
+                }
+            });
         });
     });
 </script>

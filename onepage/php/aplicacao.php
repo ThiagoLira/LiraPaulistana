@@ -316,8 +316,6 @@
 		$aula->setProfessorId($professorId);
 
 		$aula->insert();
-		
-		echo "Informações sobre aula adicionadas com sucesso";
 	}
 	
 	public function deleteAula($eventoId){
@@ -381,8 +379,6 @@
 		$eventoMusical->setDescricao($descricao);
 
 		$eventoMusical->insert();
-		
-		echo "Informações sobre Evento Musical adicionadas com sucesso";
 	}
 	
 	public function deleteEventoMusical($eventoId){
@@ -778,9 +774,9 @@
 				$aux['textColor'] = "#000000";
 
 				$aux['tipo'] = "Evento musical";
-				$aux['data'] = $umaAula['data'];
-				$aux['local'] = $umaAula['local'];
-				$aux['descricao'] = $umaAula['descricao'];
+				$aux['data'] = $umEventoMusical['data'];
+				$aux['local'] = $umEventoMusical['local'];
+				$aux['descricao'] = $umEventoMusical['descricao'];
 
 				$feed[] = $aux;
 			}
@@ -847,9 +843,9 @@
 				$aux['textColor'] = "#000000";
 
 				$aux['tipo'] = "Evento musical";
-				$aux['data'] = $umaAula['data'];
-				$aux['local'] = $umaAula['local'];
-				$aux['descricao'] = $umaAula['descricao'];
+				$aux['data'] = $umEventoMusical['data'];
+				$aux['local'] = $umEventoMusical['local'];
+				$aux['descricao'] = $umEventoMusical['descricao'];
 
 				$feed[] = $aux;
 			}
@@ -916,9 +912,9 @@
 				$aux['textColor'] = "#000000";
 
 				$aux['tipo'] = "Evento musical";
-				$aux['data'] = $umaAula['data'];
-				$aux['local'] = $umaAula['local'];
-				$aux['descricao'] = $umaAula['descricao'];
+				$aux['data'] = $umEventoMusical['data'];
+				$aux['local'] = $umEventoMusical['local'];
+				$aux['descricao'] = $umEventoMusical['descricao'];
 
 				$feed[] = $aux;
 			}
@@ -926,6 +922,48 @@
 			echo json_encode($feed);
 		} catch(PDOException $e){
 			var_dump($e);
+		}
+	}
+
+	//Select com professores-----------------------------------------------------
+	public function professoresPorInstrumento($instrumento) {
+		try{
+			global $db;
+			
+			$select = $db->prepare("SELECT Usuario.usuarioId, Usuario.nome FROM Usuario INNER JOIN Professor ON Usuario.usuarioId = Professor.usuarioId WHERE Professor.instrumento = :instrumento");
+			$select->bindParam(":instrumento", $instrumento, PDO::PARAM_STR);
+			$select->execute();
+
+			$todosProfessores = $select->fetchAll();
+
+			echo '<option value="" selected disabled>Professor</option>';
+
+			foreach($todosProfessores as $umProfessor){
+				echo '<option value="'.$umProfessor['usuarioId'].'">'.$umProfessor['nome'].'</option>';
+			}
+		} catch(PDOException $e){
+			var_dump($e);
+		}
+	}
+
+	//Select com alunos-----------------------------------------------------
+	public function alunosPorProfessor($professorId) {
+		try{
+			global $db;
+
+			$select = $db->prepare("SELECT Usuario.usuarioId, Usuario.nome FROM TemAula INNER JOIN Aluno ON TemAula.alunoId = Aluno.usuarioId INNER JOIN Usuario ON Aluno.usuarioId = Usuario.usuarioId WHERE TemAula.professorId = :id");
+			$select->bindParam(":id", $professorId, PDO::PARAM_INT);
+			$select->execute();
+
+			$alunosDeUmProfessor = $select->fetchAll();
+
+			echo '<option value="" selected disabled>Aluno</option>';
+
+			foreach($alunosDeUmProfessor as $umAluno){
+				echo '<option value="'.$umAluno['usuarioId'].'">'.$umAluno['nome'].'</option>';
+			}
+		} catch(PDOException $e){
+			var_dump($e) ;
 		}
 	}
 }

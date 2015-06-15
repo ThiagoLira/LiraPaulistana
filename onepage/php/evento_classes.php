@@ -14,10 +14,10 @@ abstract class Evento {
 	}
 
 	public function getData(){
-		return $this->data->format("Y-m-d");
+		return $this->data->format("Y-m-d H:i:s");
 	}
 	public function setData($novaData){
-		$dataFormatada = DateTime::createFromFormat("d/m/Y", $novaData);
+		$dataFormatada = DateTime::createFromFormat("d/m/Y H:i", $novaData);
 		$this->data = $dataFormatada;
 	}
 

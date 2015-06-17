@@ -76,6 +76,16 @@ button{
 
 
 
+table .tabela{
+
+  margin: 10px !important;
+
+
+}
+
+
+
+
 
 a {
   color: #03ACDC;
@@ -286,7 +296,7 @@ a:hover, a:active {
   vertical-align: top;
   color: black !important;
 }
-
+/*
 .input__field {
   position: relative;
   display: block;
@@ -301,6 +311,7 @@ a:hover, a:active {
   font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
   -webkit-appearance: none; 
 }
+*/
 
 .input__field:focus {
   outline: none;

@@ -25,27 +25,15 @@
     <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
 
-    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
-					<link rel="stylesheet" type="text/css" href="../default/css/extralayers.css" media="screen" />
-					<link rel="stylesheet" type="text/css" href="rs-plugin/css/settings.css" media="screen" />
-					<!-- PORTFOLIO AND LIGHTBOX SETTINGS -->
-					<link href="../default/bfassets/css/bootFolio.css" rel="stylesheet">
-					<link href="../default/bfassets/css/prettyPhoto.css" rel="stylesheet">
-					<!-- Bootstrap Core CSS -->
-					<link href="../default/css/bootstrap.min.css" rel="stylesheet">
-					<link href="css/font-awesome.css" rel="stylesheet">
-					<link href="css/et-icons.css" rel="stylesheet">
-					<link href="../default/css/animate.min.css" rel="stylesheet">
-					<link href="../default/css/owl-carousel.css" rel="stylesheet">
-					<link href="../default/style.css" rel="stylesheet">
-					<link href="onepage-style.css" rel="stylesheet">
+ 
 					<!-- Custom Fonts -->
 					<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,400italic,600italic,700,700italic,900' rel='stylesheet'
 					type='text/css'>
 					<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 					<!-- Estilo do Input Field-->
 					<link rel="stylesheet" type="text/css" href="css/shoko.css" />
-					<link rel="stylesheet" type="text/css" href="css/operador.css" />
+					
+				
 					<script src="js/classie.js"></script>
 					<script src="js/regexp.js"></script>
 					<!-- jQuery -->

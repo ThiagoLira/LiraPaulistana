@@ -72,14 +72,14 @@
 
 
 				foreach($todosAlunos as $umAluno){
-					echo "Nome: " . ($umAluno["nome"]) . "</br>";
-					echo "Nascimento: " . ($umAluno["dataNascimento"]) . "</br>";
-					echo "RG: " . ($umAluno["rg"]) . "</br>";
-					echo "CPF: " . ($umAluno["cpf"]) . "</br>";
-					echo "Endereço: " . ($umAluno["endereco"]) . "</br>";
-					echo "Telefone: " . ($umAluno["telefone"]) . "</br>";
-					echo "Celular: " . ($umAluno["celular"]) . "</br>";
-					echo "E-mail: " . ($umAluno["email"]) . "</br>";
+					echo "<span class=indice> Nome: </span> " . ($umAluno["nome"]) . "</br>";
+					echo "<span class=indice>Nascimento: </span> " . ($umAluno["dataNascimento"]) . "</br>";
+					echo "<span class=indice>RG:</span> " . ($umAluno["rg"]) . "</br>";
+					echo "<span class=indice>CPF:</span> " . ($umAluno["cpf"]) . "</br>";
+					echo "<span class=indice>Endereço:</span> " . ($umAluno["endereco"]) . "</br>";
+					echo "<span class=indice>Telefone:</span> " . ($umAluno["telefone"]) . "</br>";
+					echo "<span class=indice>Celular: </span>" . ($umAluno["celular"]) . "</br>";
+					echo "<span class=indice>E-mail: </span>" . ($umAluno["email"]) . "</br>";
 					echo "</br>";
 					}
 				} catch(PDOException $e){

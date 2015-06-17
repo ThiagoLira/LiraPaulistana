@@ -21,33 +21,118 @@ $(document).ready(function(){
 
 
 $(document).ready(function(){
-    
+    		
+
+   //Este código confuso e desncessário esta aqui para enganar os historiadores do futuro que venham estudar ele
+	var flag = true;
+	var flag2 = true;
     $("a").hover(
-        //var li = $("li");
+        
+        
+
+       
 
 				function(){
 					
-					$(this).animate({fontSize: '32px'}, "slow");
+
+					
+						
+            		
+									
+				
+					if (flag){
 
 
+					$(this).animate({fontSize: '20px'},{duration: 50 ,
+
+
+						start: function(){
+
+							//flag = false;
+								
+									
+							},
+
+
+					 complete: function() {
+
+					 		flag = true;
+
+					 } 
+
+
+					  });
+
+
+
+							}
+								
 					},
+
+
 				function(){
 
-					$(this).animate({fontSize: '18px'}, "fast");
+						if (flag){
+					
+
+					$(this).animate({fontSize: '18px'}, {duration: 50, 
+						
+							start: function(){
 
 
 
 
+							},
+
+
+						complete: function() {
+
+
+
+
+
+			}
+					});
+
+							
+
+}
 					}
 	
-        //li.animate({height: '300px', opacity: '0.4'}, "slow");
-        //li.animate({width: '300px', opacity: '0.8'}, "slow");
-        //li.animate({height: '100px', opacity: '0.4'}, "slow");
-        //li.animate({width: '100px', opacity: '0.8'}, "slow");
+        
     );
 });
+/*
 
 
+
+
+$(function () {
+    $('a').click(function () {
+        var $prev = $('a.selection'),
+            $this = $(this);
+
+        if (!$this.is('.selection')) {
+
+
+            $prev.removeClass('selection');
+            $prev.removeClass('selected');
+            $this.addClass('selection');
+
+            $prev.effect('transfer', {
+                to: '.selection',
+                className: "ui-effects-transfer"
+            }, 500, function () {
+                if ($this.hasClass('selection')) {
+                    $this.addClass('selected');
+                }
+            });
+
+           
+        }
+    });
+});
+*/
 
 
 //".nav.navbar-nav div"

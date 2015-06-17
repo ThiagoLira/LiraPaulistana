@@ -1,5 +1,16 @@
 <!DOCTYPE HTML PUBLIC>
+<?php
+require_once "php/aplicacao.php";
 
+session_start();
+
+$interface = new Aplicacao();
+
+if(!$interface->checkLogin()){
+    header("Location: loginAreaUsuario.php");
+    exit();
+}
+?>
 
 
 <html>
@@ -25,9 +36,9 @@
 <body>
 
 			<div>
-				<form  name="pesquisaOperador" method="post" action="pesquisa-operador.php">Digite aqui o nome do Aluno/Professor que deseja procurar:
+				<form  name="pesquisaOperador" method="post" action="pesquisar.php">Digite aqui o nome do Aluno/Professor que deseja procurar:
 					
-				<input type="text" name="pesquisa">
+				<input type="text" name="username">
 
 
 

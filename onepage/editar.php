@@ -9,6 +9,10 @@ if(!$interface->checkLogin()){
     header("Location: loginAreaUsuario.php");
     exit();
 }
+if(!isset($_GET['usuarioId'])){
+    header("Location: pesquisa-alterar.php");
+    exit();
+}
 ?>
 
 
@@ -20,10 +24,7 @@ if(!$interface->checkLogin()){
 <p class = "tituloPagina" style="margin: 10px">Editar Aluno</p>
 <table    class="tabela" style = "margin: 20px"  border="0">
 
-<tr>
-	<td>ID:</td>
-	<td align="center"><input type="text" name="id" size="30" /></td>
-</tr>
+<input type="hidden" name="id" size="30" value="<?php echo $_GET['usuarioId'];  ?>" /></td>
 
 <tr>
 	<td>Nome:</td>

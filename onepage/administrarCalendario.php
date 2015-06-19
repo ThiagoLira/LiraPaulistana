@@ -9,6 +9,10 @@ if(!$interface->checkLogin()){
     header("Location: loginAreaUsuario.php");
     exit();
 }
+// if(!$interface->isAdministrador($_SESSION['usuarioId']) && !$interface->isOperador($_SESSION['usuarioId'])){
+//     header("Location: meuPainel.php");
+//     exit();
+// }
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
@@ -201,6 +205,7 @@ if(!$interface->checkLogin()){
                 $("#data").val(date.format("DD/MM/YYYY HH:mm"));
                 if(!($(".adicionarEvento").hasClass("openForm"))){
                     $(".adicionarEvento").slideToggle("slow");
+                    $(".adicionarEvento").toggleClass("openForm");
                 }
             }
         });

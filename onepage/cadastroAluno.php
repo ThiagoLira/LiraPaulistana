@@ -4,7 +4,18 @@ require_once "php/login.php";
 require_once "php/aplicacao.php";
 require_once "php/conexao.php";
 
+session_start();
+
 $interface = new Aplicacao();
+
+if(!$interface->checkLogin()){
+    header("Location: loginAreaUsuario.php");
+    exit();
+}
+// if(!$interface->isAdministrador($_SESSION['usuarioId']) && !$interface->isOperador($_SESSION['usuarioId'])){
+//     header("Location: meuPainel.php");
+//     exit();
+// }
 
 $profaluno = $_POST['profaluno'];
 $nome = $_POST['nome'];

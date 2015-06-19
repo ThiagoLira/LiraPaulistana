@@ -1,4 +1,20 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC>
+<?php
+require_once "php/aplicacao.php";
+
+session_start();
+
+$interface = new Aplicacao();
+
+if(!$interface->checkLogin()){
+    header("Location: loginAreaUsuario.php");
+    exit();
+}
+// if(!$interface->isAdministrador($_SESSION['usuarioId']) && !$interface->isOperador($_SESSION['usuarioId'])){
+//     header("Location: meuPainel.php");
+//     exit();
+// }
+?>
 <!--[if lt IE 7 ]>
 	<html class="ie ie6" lang="en">
 	<![endif]-->

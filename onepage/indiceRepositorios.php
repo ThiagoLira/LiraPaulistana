@@ -9,6 +9,10 @@ if(!$interface->checkLogin()){
     header("Location: loginAreaUsuario.php");
     exit();
 }
+// if(!$interface->isProfessor($_SESSION['usuarioId'])){
+//     header("Location: meuPainel.php");
+//     exit();
+// }
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->

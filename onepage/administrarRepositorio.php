@@ -9,7 +9,10 @@ if(!$interface->checkLogin()){
     header("Location: loginAreaUsuario.php");
     exit();
 }
-
+// if($interface->isAluno($_SESSION['usuarioId'])){
+//     header("Location: meuPainel.php");
+//     exit();
+// }
 if(!isset($_GET['alunoId'])){
     header("Location: indiceRepositorios.php");
     exit();

@@ -80,6 +80,7 @@
 					echo "<span class=indice>Telefone:</span> " . ($umAluno["telefone"]) . "</br>";
 					echo "<span class=indice>Celular: </span>" . ($umAluno["celular"]) . "</br>";
 					echo "<span class=indice>E-mail: </span>" . ($umAluno["email"]) . "</br>";
+					echo "<a href='editar.php?usuarioId=".($umAluno['usuarioId'])."''>Editar</a>";
 					echo "</br>";
 					}
 				} catch(PDOException $e){

@@ -6,6 +6,15 @@ session_start();
 
 $interface = new Aplicacao();
 
+if(!$interface->checkLogin()){
+    header("Location: loginAreaUsuario.php");
+    exit();
+}
+// if(!$interface->isAdministrador($_SESSION['usuarioId']) && !$interface->isOperador($_SESSION['usuarioId'])){
+//     header("Location: meuPainel.php");
+//     exit();
+// }
+
 if(isset($_GET['id'])){
 	$eventoId = $_GET['id'];
 

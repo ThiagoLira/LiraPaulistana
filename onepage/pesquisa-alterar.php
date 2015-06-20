@@ -29,26 +29,25 @@ if(!$interface->checkLogin()){
 	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,400italic,600italic,700,700italic,900' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     
-	<title>Operador</title>
+	<title>Lira Paulistana | Área do usuário | Alteração de cadastro</title>
 
 
 
 </head>
 
-<p class = "tituloPagina">Bem vindo: Operador</p>
-
 <body>
 
-			<div>
-				<form  name="pesquisaOperador" method="post" action="pesquisar.php">Digite aqui o nome do Aluno/Professor que deseja procurar:
-					
-				<input type="text" name="username">
+	<section id="visualizarRepositorio" class="section-white">
+        <h1 class="tituloPagina">Alteração de cadastro</h1>
+		<form  name="pesquisaOperador" method="post" action="pesquisar.php">Digite aqui o nome do Aluno/Professor que deseja procurar:
+			
+		<input type="text" name="username">
 
 
 
-				<button type = "submit"  > Pesquisar</button>
-				</form>		
-			</div>
+		<button type = "submit"  > Pesquisar</button>
+		</form>		
+	</section>
 
 
 </body>

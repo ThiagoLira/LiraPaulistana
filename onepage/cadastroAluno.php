@@ -1,8 +1,5 @@
 <?php
-require_once "php/usuario_classes.php";
-require_once "php/login.php";
 require_once "php/aplicacao.php";
-require_once "php/conexao.php";
 
 session_start();
 
@@ -31,12 +28,25 @@ $formacao = $_POST['formacao'];
 $preferencia = $_POST['preferencia'];
 
 if ($profaluno == "Aluno"){
-	$interface->insertAluno($nome, $nascimento, $rg, $cpf, $endereco, $telefone, $celular, $email);
-	echo "estou aqui";
+	if(isset($nome) && isset($rg) && isset($cpf) && isset($telefone) && isset($nascimento) && isset($celular) && isset($endereco) && isset($email)){
+		$interface->insertAluno($nome, $nascimento, $rg, $cpf, $endereco, $telefone, $celular, $email);
+
+		$_SESSION['msg'] = "Aluno cadastrado!";
+	}
+	else {
+		$_SESSION['erro'] = "Preencha todos os campos.";
+	}
 }
 else {
-	$interface->insertProf($nome, $nascimento, $rg, $cpf, $endereco, $telefone, $celular, $email, $instrumento, $formacao, $preferencia);
+	if(isset($nome) && isset($rg) && isset($cpf) && isset($telefone) && isset($nascimento) && isset($celular) && isset($endereco) && isset($email) && isset($instrumento) && isset($formacao) && isset($preferencia)){
+		$interface->insertProf($nome, $nascimento, $rg, $cpf, $endereco, $telefone, $celular, $email, $instrumento, $formacao, $preferencia);
+
+		$_SESSION['msg'] = "Professor cadastrado!";
+	}
+	else {
+		$_SESSION['erro'] = "Preencha todos os campos.";
+	}
 }
 
-// header('Location: login-aluno.html');
-// exit();
+header('Location: paginaCadastro.php');
+exit();

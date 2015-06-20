@@ -47,6 +47,7 @@ if(!$interface->checkLogin()){
 					type='text/css'>
 					<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 					<!-- Estilo do Input Field-->
+					<link rel="stylesheet" type="text/css" href="css/operador.css" />
 					<link rel="stylesheet" type="text/css" href="css/shoko.css" />
 					
 				
@@ -90,9 +91,9 @@ if(!$interface->checkLogin()){
 						 if (strUser=="Professor")
 						 {
 
-						 		document.getElementById('profe').style.display='block';
-						 		document.getElementById('profe1').style.display='block';
-						 		document.getElementById('profe2').style.display='block';
+						 		document.getElementById('profe').style.display='inline-block';
+						 		document.getElementById('profe1').style.display='inline-block';
+						 		document.getElementById('profe2').style.display='inline-block';
 
 						 }
 
@@ -122,15 +123,25 @@ if(!$interface->checkLogin()){
 					</style>
 				</head>
 				<body>
-					<div>
+					<section id="cadastro" class="section-white">
+            			<h1 class="tituloPagina">Cadastro</h1>
+            			<?php if(isset($_SESSION['erro']) && $_SESSION['erro'] != NULL) {
+			                echo "<p class='erro'>".$_SESSION['erro']."</p>";
+			                $_SESSION['erro'] = NULL;
+			            }
+			            if(isset($_SESSION['msg']) && $_SESSION['msg'] != NULL) {
+			                echo "<p class='msg'>".$_SESSION['msg']."</p>";
+			                $_SESSION['msg'] = NULL;
+			            }
+			            ?>
 						<form name="cadastroAluno" method="post" action="cadastroAluno.php">
-							<select name="profaluno" class = "selectCadastro" id="profaluno" onmouseout="selecionaCadastro();">
+							<select name="profaluno" class = "selectCadastro" id="profaluno" onchange="selecionaCadastro();">
 							  <option value="Professor">Professor</option>
 							  <option value="Aluno" selected="selected" >Aluno</option>
 							</select>
 							<br>
 							<span class="input input--hoshi">
-								<input class="input__field input__field--hoshi" name="nome" type="text" id="input-1" />
+								<input class="input__field input__field--hoshi" name="nome" type="text" id="input-1" required />
 								<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
 									<span class="input__label-content input__label-content--hoshi">Nome</span>
 								</label>
@@ -138,7 +149,7 @@ if(!$interface->checkLogin()){
 							<br>
 							<span class="input input--hoshi">
 								<input maxlength="15" class="input__field input__field--hoshi" name="rg" type="text" id="input-2" onKeyPress="MascaraRG(cadastroAluno.rg);"
-								/>
+								required />
 								<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-5">
 									<span class="input__label-content input__label-content--hoshi">RG</span>
 								</label>
@@ -146,7 +157,7 @@ if(!$interface->checkLogin()){
 							<br>
 							<span class="input input--hoshi">
 								<input onBlur="ValidarCPF(cadastroAluno.cpf);" maxlength="14" onKeyPress="MascaraCPF(cadastroAluno.cpf);" name="cpf" class="input__field input__field--hoshi"
-								type="text" id="input-3" />
+								type="text" id="input-3" required />
 								<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-6">
 									<span class="input__label-content input__label-content--hoshi">CPF</span>
 								</label>
@@ -154,7 +165,7 @@ if(!$interface->checkLogin()){
 							<br>
 							<span class="input input--hoshi">
 								<input maxlength="10" name="tel" onKeyPress="MascaraTelefone(cadastroAluno.tel);" class="input__field input__field--hoshi"
-								type="text" id="input-4" />
+								type="text" id="input-4" required />
 								<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-6">
 									<span class="input__label-content input__label-content--hoshi">Telefone</span>
 								</label>
@@ -162,7 +173,7 @@ if(!$interface->checkLogin()){
 							<br>
 							<span class="input input--hoshi">
 								<input maxlength="10" name="datanasc" onKeyPress="MascaraTelefone(cadastroAluno.tel);" class="input__field input__field--hoshi"
-								type="text" id="input-4" />
+								type="text" id="input-4" required />
 								<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-6">
 									<span class="input__label-content input__label-content--hoshi">Data de Nascimento</span>
 								</label>
@@ -170,14 +181,14 @@ if(!$interface->checkLogin()){
 							<br>
 							<span class="input input--hoshi">
 								<input maxlength="10" name="endereco" onKeyPress="MascaraTelefone(cadastroAluno.tel);" class="input__field input__field--hoshi"
-								type="text" id="input-4" />
+								type="text" id="input-4" required />
 								<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-6">
 									<span class="input__label-content input__label-content--hoshi">Endereço</span>
 								</label>
 							</span>
 							<br>
 							<span class="input input--hoshi">
-								<input class="input__field input__field--hoshi" name="email" type="email" id="input-5" />
+								<input class="input__field input__field--hoshi" name="email" type="email" id="input-5" required />
 								<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-6">
 									<span class="input__label-content input__label-content--hoshi">Email</span>
 								</label>
@@ -185,13 +196,13 @@ if(!$interface->checkLogin()){
 							<br>
 							<span class="input input--hoshi">
 								<input maxlength="11" name="cel" onKeyPress="MascaraCelular(cadastroAluno.cel);" class="input__field input__field--hoshi"
-								type="text" id="input-6" />
+								type="text" id="input-6" required />
 								<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-6">
 									<span class="input__label-content input__label-content--hoshi">Celular</span>
 								</label>
 							</span>
 							<br>
-								<span  style=" display: none" id = "profe" class="input input--hoshi">
+								<span  style="display: none" id ="profe" class="input input--hoshi">
 								<input maxlength="11" name="instrumento"  class="input__field input__field--hoshi"
 								type="text" id="input-6" />
 								<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-6">
@@ -199,7 +210,7 @@ if(!$interface->checkLogin()){
 								</label>
 							</span>
 							<br>
-								<span style=" display: none" id = "profe1" class="input input--hoshi">
+								<span style="display: none" id ="profe1" class="input input--hoshi">
 								<input maxlength="11" name="formacao"  class="input__field input__field--hoshi"
 								type="text" id="input-6" />
 								<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-6">
@@ -207,7 +218,7 @@ if(!$interface->checkLogin()){
 								</label>
 							</span>
 							<br>
-								<span style=" display: none" id = "profe2" class="input input--hoshi">
+								<span style="display: none" id ="profe2" class="input input--hoshi">
 								<input maxlength="11" name="preferencia"  class="input__field input__field--hoshi"
 								type="text" id="input-6" />
 								<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-6">
@@ -219,7 +230,8 @@ if(!$interface->checkLogin()){
 								<button type = "submit"  class="btn btn-primary btn-lg border-radius" id="botaoCadastra">Enviar</button>
 							</div>
 						</form>
-					</div>
+						<p><a href="meuPainel.php">Voltar a meu painel.</a></p>
+					</section>
 				</body>
 				<link rel="stylesheet" type="text/css" href="css/normalize.css" />
 				<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.2.0/css/font-awesome.min.css" />

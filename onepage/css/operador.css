@@ -281,6 +281,13 @@ a:hover, a:active {
   opacity: 0.75;
 }
 
+.indice {
+  font-family: "Baron Neue",sans-serif;
+  letter-spacing: 0px;
+  font-size: 19px;
+  color:  rgba(3,172,220,1);
+}
+
 
 /* Shoko */
 

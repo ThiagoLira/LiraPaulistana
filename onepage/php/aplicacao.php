@@ -53,7 +53,7 @@
 
 			$aluno->update();
 		
-			echo "Informações sobre o aluno atualizadas com sucesso";
+			echo "<p class='msg'>Informações sobre o aluno atualizadas com sucesso.</p>";
 		}
 
 		
@@ -72,7 +72,7 @@
 
 
 				foreach($todosAlunos as $umAluno){
-					echo "<span class=indice> Nome: </span> " . ($umAluno["nome"]) . "</br>";
+					echo "<span class=indice>Nome: </span> " . ($umAluno["nome"]) . "</br>";
 					echo "<span class=indice>Nascimento: </span> " . ($umAluno["dataNascimento"]) . "</br>";
 					echo "<span class=indice>RG:</span> " . ($umAluno["rg"]) . "</br>";
 					echo "<span class=indice>CPF:</span> " . ($umAluno["cpf"]) . "</br>";
@@ -80,7 +80,7 @@
 					echo "<span class=indice>Telefone:</span> " . ($umAluno["telefone"]) . "</br>";
 					echo "<span class=indice>Celular: </span>" . ($umAluno["celular"]) . "</br>";
 					echo "<span class=indice>E-mail: </span>" . ($umAluno["email"]) . "</br>";
-					echo "<a href='editar.php?usuarioId=".($umAluno['usuarioId'])."''>Editar</a>";
+					echo "<a href='editar.php?alunoId=".($umAluno['usuarioId'])."''>Editar</a>";
 					echo "</br>";
 					}
 				} catch(PDOException $e){
@@ -141,14 +141,14 @@
 
 
 				foreach($todosAdministradors as $umAdministrador){
-					echo "Nome: " . ($umAdministrador["nome"]) . "</br>";
-					echo "Nascimento: " . ($umAdministrador["dataNascimento"]) . "</br>";
-					echo "RG: " . ($umAdministrador["rg"]) . "</br>";
-					echo "CPF: " . ($umAdministrador["cpf"]) . "</br>";
-					echo "Endereço: " . ($umAdministrador["endereco"]) . "</br>";
-					echo "Telefone: " . ($umAdministrador["telefone"]) . "</br>";
-					echo "Celular: " . ($umAdministrador["celular"]) . "</br>";
-					echo "E-mail: " . ($umAdministrador["email"]) . "</br>";
+					echo "<span class=indice>Nome: </span>" . ($umAdministrador["nome"]) . "</br>";
+					echo "<span class=indice>Nascimento: </span>" . ($umAdministrador["dataNascimento"]) . "</br>";
+					echo "<span class=indice>RG: </span>" . ($umAdministrador["rg"]) . "</br>";
+					echo "<span class=indice>CPF: </span>" . ($umAdministrador["cpf"]) . "</br>";
+					echo "<span class=indice>Endereço: </span>" . ($umAdministrador["endereco"]) . "</br>";
+					echo "<span class=indice>Telefone: </span>" . ($umAdministrador["telefone"]) . "</br>";
+					echo "<span class=indice>Celular: </span>" . ($umAdministrador["celular"]) . "</br>";
+					echo "<span class=indice>E-mail: </span>" . ($umAdministrador["email"]) . "</br>";
 					echo "</br>";
 					}
 				} catch(PDOException $e){
@@ -209,14 +209,14 @@
 
 
 				foreach($todosOperadors as $umOperador){
-					echo "Nome: " . ($umOperador["nome"]) . "</br>";
-					echo "Nascimento: " . ($umOperador["dataNascimento"]) . "</br>";
-					echo "RG: " . ($umOperador["rg"]) . "</br>";
-					echo "CPF: " . ($umOperador["cpf"]) . "</br>";
-					echo "Endereço: " . ($umOperador["endereco"]) . "</br>";
-					echo "Telefone: " . ($umOperador["telefone"]) . "</br>";
-					echo "Celular: " . ($umOperador["celular"]) . "</br>";
-					echo "E-mail: " . ($umOperador["email"]) . "</br>";
+					echo "<span class=indice>Nome: </span>" . ($umOperador["nome"]) . "</br>";
+					echo "<span class=indice>Nascimento: </span>" . ($umOperador["dataNascimento"]) . "</br>";
+					echo "<span class=indice>RG: </span>" . ($umOperador["rg"]) . "</br>";
+					echo "<span class=indice>CPF: </span>" . ($umOperador["cpf"]) . "</br>";
+					echo "<span class=indice>Endereço: </span>" . ($umOperador["endereco"]) . "</br>";
+					echo "<span class=indice>Telefone: </span>" . ($umOperador["telefone"]) . "</br>";
+					echo "<span class=indice>Celular: </span>" . ($umOperador["celular"]) . "</br>";
+					echo "<span class=indice>E-mail: </span>" . ($umOperador["email"]) . "</br>";
 					echo "</br>";
 					}
 				} catch(PDOException $e){
@@ -283,17 +283,18 @@
 
 
 			foreach($todosProfs as $umProf){
-				echo "Nome: " . ($umProf["nome"]) . "</br>";
-				echo "Nascimento: " . ($umProf["dataNascimento"]) . "</br>";
-				echo "RG: " . ($umProf["rg"]) . "</br>";
-				echo "CPF: " . ($umProf["cpf"]) . "</br>";
-				echo "Endereço: " . ($umProf["endereco"]) . "</br>";
-				echo "Telefone: " . ($umProf["telefone"]) . "</br>";
-				echo "Celular: " . ($umProf["celular"]) . "</br>";
-				echo "E-mail: " . ($umProf["email"]) . "</br>";
-				echo "Instrumento: " . ($umProf["instrumento"]) . "</br>";
-				echo "Formação Acadêmica: " . ($umProf["formacao"]) . "</br>";
-				echo "Preferências: " . ($umProf["preferencias"]) . "</br>";
+				echo "<span class=indice>Nome: </span>" . ($umProf["nome"]) . "</br>";
+				echo "<span class=indice>Nascimento: </span>" . ($umProf["dataNascimento"]) . "</br>";
+				echo "<span class=indice>RG: </span>" . ($umProf["rg"]) . "</br>";
+				echo "<span class=indice>CPF: </span>" . ($umProf["cpf"]) . "</br>";
+				echo "<span class=indice>Endereço: </span>" . ($umProf["endereco"]) . "</br>";
+				echo "<span class=indice>Telefone: </span>" . ($umProf["telefone"]) . "</br>";
+				echo "<span class=indice>Celular: </span>" . ($umProf["celular"]) . "</br>";
+				echo "<span class=indice>E-mail: </span>" . ($umProf["email"]) . "</br>";
+				echo "<span class=indice>Instrumento: </span>" . ($umProf["instrumento"]) . "</br>";
+				echo "<span class=indice>Formação Acadêmica: </span>" . ($umProf["formacao"]) . "</br>";
+				echo "<span class=indice>Preferências: </span>" . ($umProf["preferencias"]) . "</br>";
+				echo "<a href='editar.php?professorId=".($umAluno['usuarioId'])."''>Editar</a>";
 				echo "</br>";
 				}
 			} catch(PDOException $e){
@@ -963,6 +964,40 @@
 			foreach($alunosDeUmProfessor as $umAluno){
 				echo '<option value="'.$umAluno['usuarioId'].'">'.$umAluno['nome'].'</option>';
 			}
+		} catch(PDOException $e){
+			var_dump($e) ;
+		}
+	}
+
+	//Get aluno ------------------
+	public function getAluno($id) {
+		try{
+			global $db;
+
+			$select = $db->prepare("SELECT * FROM Usuario WHERE usuarioId = :id");
+			$select->bindParam(":id", $id, PDO::PARAM_INT);
+			$select->execute();
+
+			$aluno = $select->fetch(PDO::FETCH_ASSOC);
+
+			return $aluno;
+		} catch(PDOException $e){
+			var_dump($e) ;
+		}
+	}
+
+	//Get professor ---------------
+	public function getProfessor($id) {
+		try{
+			global $db;
+
+			$select = $db->prepare("SELECT * FROM Usuario INNER JOIN Professor ON Usuario.usuarioId = Professor.usuarioId WHERE usuarioId = :id");
+			$select->bindParam(":id", $id, PDO::PARAM_INT);
+			$select->execute();
+
+			$professor = $select->fetch(PDO::FETCH_ASSOC);
+
+			return $professor;
 		} catch(PDOException $e){
 			var_dump($e) ;
 		}

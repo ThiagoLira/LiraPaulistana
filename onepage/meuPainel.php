@@ -51,16 +51,29 @@ if(!$interface->checkLogin()){
             <div class="divider"></div>
             <p>Bem-vindo:</p>
             <p id="NomeUsuario"><?php $interface->nome($_SESSION['usuarioId']) ?></p>
-            <ul class="listaOp">          
-                <li><a href="paginaCadastro.php">Cadastro</a></li>
-                <li><a href="pesquisa-alterar.php">Alteração/Pesquisar</a></li>
-                <li><a href="">Deletar</a></li>
-                <li><a href="listaDeAlunos.php">Lista de alunos</a></li>
-                <li><a href="listaDeProfessores.php">Lista de professores</a></li>
-                <li><a href="administrarCalendario.php">Administrar calendário</a></li>
-                <li><a href="calendario.php">Calendário</a></li>
-                <li><a href="repositorio.php">Repositório</a></li>
-                <li><a href="indiceRepositorios.php">Índice de repositórios</a></li>
+            <ul class="listaOp">
+                <?php
+                if($interface->isAdministrador($_SESSION['usuarioId'])){
+                    echo '<li><a href="paginaCadastro.php">Cadastro</a></li>';
+                    echo '<li><a href="pesquisa-alterar.php">Alteração/Pesquisar</a></li>';
+                    echo '<li><a href="listaDeAlunos.php">Lista de alunos</a></li>';
+                    echo '<li><a href="listaDeProfessores.php">Lista de professores</a></li>';
+                    echo '<li><a href="administrarCalendario.php">Administrar calendário</a></li>';
+                }
+                else if($interface->isOperador($_SESSION['usuarioId'])){
+                    echo '<li><a href="listaDeAlunos.php">Lista de alunos</a></li>';
+                    echo '<li><a href="listaDeProfessores.php">Lista de professores</a></li>';
+                    echo '<li><a href="administrarCalendario.php">Administrar calendário</a></li>';
+                }
+                else if($interface->isProfessor($_SESSION['usuarioId'])){
+                    echo '<li><a href="calendario.php">Calendário</a></li>';
+                    echo '<li><a href="indiceRepositorios.php">Índice de repositórios</a></li>';
+                }
+                else {
+                    echo '<li><a href="calendario.php">Calendário</a></li>';
+                    echo '<li><a href="repositorio.php">Repositório</a></li>';
+                }
+                ?>
                 <li><a href="logout.php">Sair</a></li>
             </ul>
         </section>

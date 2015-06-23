@@ -20,10 +20,10 @@ if(!$interface->checkLogin()){
     header("Location: loginAreaUsuario.php");
     exit();
 }
-// if($interface->isAluno($_SESSION['usuarioId'])){
-//     header("Location: meuPainel.php");
-//     exit();
-// }
+if($interface->isAluno($_SESSION['usuarioId'])){
+    header("Location: meuPainel.php");
+    exit();
+}
 
 $nome = $_POST['nome'];
 $link = $_POST['link'];

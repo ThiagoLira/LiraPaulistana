@@ -9,10 +9,10 @@ if(!$interface->checkLogin()){
     header("Location: loginAreaUsuario.php");
     exit();
 }
-// if(!$interface->isAdministrador($_SESSION['usuarioId']) && !$interface->isOperador($_SESSION['usuarioId'])){
-//     header("Location: meuPainel.php");
-//     exit();
-// }
+if(!$interface->isAdministrador($_SESSION['usuarioId']) && !$interface->isOperador($_SESSION['usuarioId'])){
+    header("Location: meuPainel.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
@@ -85,7 +85,7 @@ if(!$interface->checkLogin()){
         $('#verTodosAlunos').dataTable({
             "dom": 'T<"clear">lfrtip',
             "tableTools": {
-                "sSwfPath": "/swf/copy_csv_xls_pdf.swf"
+                "sSwfPath": "./swf/copy_csv_xls_pdf.swf"
             },
             "columnDefs": [
                 {

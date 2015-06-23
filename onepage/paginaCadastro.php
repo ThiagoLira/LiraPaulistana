@@ -10,10 +10,10 @@ if(!$interface->checkLogin()){
     header("Location: loginAreaUsuario.php");
     exit();
 }
-// if(!$interface->isAdministrador($_SESSION['usuarioId']) && !$interface->isOperador($_SESSION['usuarioId'])){
-//     header("Location: meuPainel.php");
-//     exit();
-// }
+if(!$interface->isAdministrador($_SESSION['usuarioId']) && !$interface->isOperador($_SESSION['usuarioId'])){
+    header("Location: meuPainel.php");
+    exit();
+}
 ?>
 <!--[if lt IE 7 ]>
 	<html class="ie ie6" lang="en">
@@ -50,11 +50,12 @@ if(!$interface->checkLogin()){
 					<link rel="stylesheet" type="text/css" href="css/operador.css" />
 					<link rel="stylesheet" type="text/css" href="css/shoko.css" />
 					
-				
+					<script src="../default/js/jquery.js"></script>
 					<script src="js/classie.js"></script>
 					<script src="js/regexp.js"></script>
+					<script src="js/jquery.maskedinput.min.js"></script>
 					<!-- jQuery -->
-					<script src="../default/js/jquery.js"></script>
+					
 					<script type="text/javascript">
 						var _gaq = _gaq || [];
 						_gaq.push(['_setAccount', 'UA-7243260-2']);
@@ -172,7 +173,7 @@ if(!$interface->checkLogin()){
 							</span>
 							<br>
 							<span class="input input--hoshi">
-								<input maxlength="10" name="datanasc" onKeyPress="MascaraTelefone(cadastroAluno.tel);" class="input__field input__field--hoshi"
+								<input maxlength="10" id="datanasc" name="datanasc" onKeyPress="MascaraTelefone(cadastroAluno.tel);" class="input__field input__field--hoshi"
 								type="text" id="input-4" required />
 								<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-6">
 									<span class="input__label-content input__label-content--hoshi">Data de Nascimento</span>
@@ -236,6 +237,7 @@ if(!$interface->checkLogin()){
 				<link rel="stylesheet" type="text/css" href="css/normalize.css" />
 				<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
 				<script>
+					$("#datanasc").mask("99/99/9999");
 					(function() {
 						// trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
 						if (!String.prototype.trim) {

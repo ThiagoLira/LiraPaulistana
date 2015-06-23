@@ -9,10 +9,10 @@ if(!$interface->checkLogin()){
     header("Location: loginAreaUsuario.php");
     exit();
 }
-// if(!$interface->isAdministrador($_SESSION['usuarioId']) && !$interface->isOperador($_SESSION['usuarioId'])){
-//     header("Location: meuPainel.php");
-//     exit();
-// }
+if(!$interface->isAdministrador($_SESSION['usuarioId']) && !$interface->isOperador($_SESSION['usuarioId'])){
+    header("Location: meuPainel.php");
+    exit();
+}
 
 $profaluno = $_POST['profaluno'];
 $nome = $_POST['nome'];

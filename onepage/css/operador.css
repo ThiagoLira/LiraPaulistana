@@ -377,10 +377,10 @@ a:hover, a:active {
   background: transparent;
   color: black !important;
   font-size: 1.55em;
+  border: 0;
 }
 
 .input__label--shoko {
-  
   position: absolute;
   top: 2em;
   left: 0;
@@ -427,4 +427,3 @@ a:hover, a:active {
   transform: translate3d(-66.6%, 0, 0);
   color: black;
 }
-*/

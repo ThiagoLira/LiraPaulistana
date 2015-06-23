@@ -52,6 +52,8 @@ if(!$interface->isAdministrador($_SESSION['usuarioId']) && !$interface->isOperad
 	<link href="css/operador.css" rel="stylesheet">
 	<script src="../default/js/jquery.js"></script>
 	<script src="js/jquery.maskedinput.min.js"></script>
+
+	<script src="js/regexp.js"></script>
 </head>
 
 <body>
@@ -74,27 +76,27 @@ if(!$interface->isAdministrador($_SESSION['usuarioId']) && !$interface->isOperad
 
 <tr>
 	<td>RG:</td>
-	<td align="center"><input type="text" name="rg" size="30" value="<?php echo $user['rg'] ?>" required /></td>
+	<td align="center"><input type="text" name="rg" size="30" id = "rg" value="<?php echo $user['rg'] ?>" required /></td>
 </tr>
 
 <tr>
 	<td>CPF:</td>
-	<td align="center"><input type="text" name="cpf" size="30" value="<?php echo $user['cpf'] ?>" required /></td>
+	<td align="center"><input type="text" name="cpf" size="30" id = "cpf" value="<?php echo $user['cpf'] ?>" required /></td>
 </tr>
 
 <tr>
 	<td>Endereco:</td>
-	<td align="center"><input type="text" name="endereco" size="30" value="<?php echo $user['endereco'] ?>" required /></td>
+	<td align="center"><input type="text" name="endereco" size="30"  value="<?php echo $user['endereco'] ?>" required /></td>
 </tr>
 
 <tr>
 	<td>Telefone:</td>
-	<td align="center"><input type="text" name="telefone" size="30" value="<?php echo $user['telefone'] ?>" required /></td>
+	<td align="center"><input type="text" name="telefone" size="30" id = "tel" value="<?php echo $user['telefone'] ?>" required /></td>
 </tr>
 
 <tr>
 	<td>Celular:</td>
-	<td align="center"><input type="text" name="celular" size="30" value="<?php echo $user['celular'] ?>" required /></td>
+	<td align="center"><input type="text" name="celular" size="30" id = "cel" value="<?php echo $user['celular'] ?>" required /></td>
 </tr>
 
 <tr>

@@ -149,7 +149,7 @@ if(!$interface->isAdministrador($_SESSION['usuarioId']) && !$interface->isOperad
 							</span>
 							<br>
 							<span class="input input--hoshi">
-								<input maxlength="15" class="input__field input__field--hoshi" name="rg" type="text" id="input-2" onKeyPress="MascaraRG(cadastroAluno.rg);"
+								<input maxlength="15" class="input__field input__field--hoshi" name="rg" type="text" id="rg" 
 								required />
 								<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-5">
 									<span class="input__label-content input__label-content--hoshi">RG</span>
@@ -157,24 +157,24 @@ if(!$interface->isAdministrador($_SESSION['usuarioId']) && !$interface->isOperad
 							</span>
 							<br>
 							<span class="input input--hoshi">
-								<input onBlur="ValidarCPF(cadastroAluno.cpf);" maxlength="14" onKeyPress="MascaraCPF(cadastroAluno.cpf);" name="cpf" class="input__field input__field--hoshi"
-								type="text" id="input-3" required />
+								<input onBlur="ValidarCPF(cadastroAluno.cpf);" maxlength="14"  name="cpf" class="input__field input__field--hoshi"
+								type="text" id="cpf" required />
 								<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-6">
 									<span class="input__label-content input__label-content--hoshi">CPF</span>
 								</label>
 							</span>
 							<br>
 							<span class="input input--hoshi">
-								<input maxlength="20" name="tel" onKeyPress="MascaraTelefone(cadastroAluno.tel);" class="input__field input__field--hoshi"
-								type="text" id="input-4" required />
+								<input maxlength="20" name="tel"  class="input__field input__field--hoshi"
+								type="text" id="tel" required />
 								<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-6">
 									<span class="input__label-content input__label-content--hoshi">Telefone</span>
 								</label>
 							</span>
 							<br>
 							<span class="input input--hoshi">
-								<input maxlength="10" id="datanasc" name="datanasc" onKeyPress="MascaraTelefone(cadastroAluno.tel);" class="input__field input__field--hoshi"
-								type="text" id="input-4" required />
+								<input maxlength="10" id="datanasc" name="datanasc"  class="input__field input__field--hoshi"
+								type="text" id="data" required />
 								<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-6">
 									<span class="input__label-content input__label-content--hoshi">Data de Nascimento</span>
 								</label>
@@ -196,8 +196,8 @@ if(!$interface->isAdministrador($_SESSION['usuarioId']) && !$interface->isOperad
 							</span>
 							<br>
 							<span class="input input--hoshi">
-								<input maxlength="20" name="cel" onKeyPress="MascaraCelular(cadastroAluno.cel);" class="input__field input__field--hoshi"
-								type="text" id="input-6" required />
+								<input maxlength="20" name="cel"  class="input__field input__field--hoshi"
+								type="text" id="cel" required />
 								<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-6">
 									<span class="input__label-content input__label-content--hoshi">Celular</span>
 								</label>
@@ -237,7 +237,7 @@ if(!$interface->isAdministrador($_SESSION['usuarioId']) && !$interface->isOperad
 				<link rel="stylesheet" type="text/css" href="css/normalize.css" />
 				<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
 				<script>
-					$("#datanasc").mask("99/99/9999");
+					
 					(function() {
 						// trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
 						if (!String.prototype.trim) {

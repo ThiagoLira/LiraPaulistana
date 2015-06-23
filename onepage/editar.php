@@ -30,7 +30,30 @@ if(!$interface->isAdministrador($_SESSION['usuarioId']) && !$interface->isOperad
 
 <html>
 
-<link href="css/operador.css" rel="stylesheet">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Lira Paulistana | Área do usuário | Alterar cadastro</title>
+
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,400italic,600italic,700,700italic,900' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	<link href="css/operador.css" rel="stylesheet">
+	<script src="../default/js/jquery.js"></script>
+	<script src="js/jquery.maskedinput.min.js"></script>
+</head>
+
 <body>
 	<section id="listaAlunos" class="section-white">
 <form action="finalizar.php" method="post">
@@ -46,7 +69,7 @@ if(!$interface->isAdministrador($_SESSION['usuarioId']) && !$interface->isOperad
 
 <tr>
 	<td>Data de nascimento:</td>
-	<td align="center"><input type="text" name="data" size="30" value="<?php echo substr($data, 8, 2).'/'.substr($data, 5, 2).'/'.substr($data, 0, 4) ?>" required /></td>
+	<td align="center"><input type="text" id="datanasc" name="data" size="30" value="<?php echo substr($data, 8, 2).'/'.substr($data, 5, 2).'/'.substr($data, 0, 4) ?>" required /></td>
 </tr>
 
 <tr>
@@ -89,4 +112,9 @@ if(!$interface->isAdministrador($_SESSION['usuarioId']) && !$interface->isOperad
 <p><a href="meuPainel.php">Voltar a meu painel.</a></p>
 </section>
 </body>
+
+<script type="text/javascript">
+	$("#datanasc").mask("99/99/9999");
+</script>
+
 </html>

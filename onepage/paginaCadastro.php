@@ -165,7 +165,7 @@ if(!$interface->isAdministrador($_SESSION['usuarioId']) && !$interface->isOperad
 							</span>
 							<br>
 							<span class="input input--hoshi">
-								<input maxlength="10" name="tel" onKeyPress="MascaraTelefone(cadastroAluno.tel);" class="input__field input__field--hoshi"
+								<input maxlength="20" name="tel" onKeyPress="MascaraTelefone(cadastroAluno.tel);" class="input__field input__field--hoshi"
 								type="text" id="input-4" required />
 								<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-6">
 									<span class="input__label-content input__label-content--hoshi">Telefone</span>
@@ -196,7 +196,7 @@ if(!$interface->isAdministrador($_SESSION['usuarioId']) && !$interface->isOperad
 							</span>
 							<br>
 							<span class="input input--hoshi">
-								<input maxlength="11" name="cel" onKeyPress="MascaraCelular(cadastroAluno.cel);" class="input__field input__field--hoshi"
+								<input maxlength="20" name="cel" onKeyPress="MascaraCelular(cadastroAluno.cel);" class="input__field input__field--hoshi"
 								type="text" id="input-6" required />
 								<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-6">
 									<span class="input__label-content input__label-content--hoshi">Celular</span>

@@ -26,10 +26,13 @@ $email = $_POST['email'];
 $instrumento = $_POST['instrumento'];
 $formacao = $_POST['formacao'];
 $preferencia = $_POST['preferencia'];
+$username = $_POST['username'];
+$hash = md5($_POST['senha']);
+$professorId = $_POST['professorId'];
 
 if ($profaluno == "Aluno"){
-	if(isset($nome) && isset($rg) && isset($cpf) && isset($telefone) && isset($nascimento) && isset($celular) && isset($endereco) && isset($email)){
-		$interface->insertAluno($nome, $nascimento, $rg, $cpf, $endereco, $telefone, $celular, $email);
+	if(isset($nome) && isset($rg) && isset($cpf) && isset($telefone) && isset($nascimento) && isset($celular) && isset($endereco) && isset($email) && isset($username) && isset($hash) && isset($professorId)){
+		$interface->insertAluno($nome, $nascimento, $rg, $cpf, $endereco, $telefone, $celular, $email, $username, $hash, $professorId);
 
 		$_SESSION['msg'] = "Aluno cadastrado!";
 	}
@@ -38,8 +41,8 @@ if ($profaluno == "Aluno"){
 	}
 }
 else {
-	if(isset($nome) && isset($rg) && isset($cpf) && isset($telefone) && isset($nascimento) && isset($celular) && isset($endereco) && isset($email) && isset($instrumento) && isset($formacao) && isset($preferencia)){
-		$interface->insertProf($nome, $nascimento, $rg, $cpf, $endereco, $telefone, $celular, $email, $instrumento, $formacao, $preferencia);
+	if(isset($nome) && isset($rg) && isset($cpf) && isset($telefone) && isset($nascimento) && isset($celular) && isset($endereco) && isset($email) && isset($username) && isset($hash) && isset($instrumento) && isset($formacao) && isset($preferencia)){
+		$interface->insertProf($nome, $nascimento, $rg, $cpf, $endereco, $telefone, $celular, $email, $username, $hash, $instrumento, $formacao, $preferencia);
 
 		$_SESSION['msg'] = "Professor cadastrado!";
 	}

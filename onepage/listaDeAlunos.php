@@ -82,7 +82,13 @@ if(!$interface->isAdministrador($_SESSION['usuarioId']) && !$interface->isOperad
         $('#verTodosAlunos').dataTable({
             "dom": 'T<"clear">lfrtip',
             "tableTools": {
-                "sSwfPath": "./swf/copy_csv_xls_pdf.swf"
+                "sSwfPath": "./swf/copy_csv_xls_pdf.swf",
+                "aButtons": [
+                                "copy",
+                                "csv",
+                                "xls",
+                                "print"
+                            ]
             }
         });
     });

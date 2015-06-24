@@ -104,6 +104,20 @@ if(!$interface->isAdministrador($_SESSION['usuarioId']) && !$interface->isOperad
 	<td align="center"><input type="text" name="email" size="30" value="<?php echo $user['email'] ?>" required /></td>
 </tr>
 
+<tr>
+	<td>Login:</td>
+	<td align="center"><input type="text" name="username" size="30" value="<?php echo $user['username'] ?>" /></td>
+</tr>
+
+<tr>
+	<td>Senha:</td>
+	<td align="center"><input type="password" name="senha" size="30" value="" /></td>
+</tr>
+
+<tr>
+	<td>Professor do aluno:</td>
+	<td align="center"><select id="profdoaluno2" name="professorId"><?php $interface->selectTodosProfessores($user['professorId']) ?></select></td>
+</tr>
 
 	
 

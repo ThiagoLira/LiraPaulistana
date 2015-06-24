@@ -81,7 +81,7 @@ if(!$interface->isAdministrador($_SESSION['usuarioId']) && !$interface->isOperad
 
 						 if (strUser=="Aluno")
 						 {
-
+						 		document.getElementById('alun').style.display='inline-block';
 						 		document.getElementById('profe').style.display='none';
 						 		document.getElementById('profe1').style.display='none';
 						 		document.getElementById('profe2').style.display='none';
@@ -91,7 +91,7 @@ if(!$interface->isAdministrador($_SESSION['usuarioId']) && !$interface->isOperad
 
 						 if (strUser=="Professor")
 						 {
-
+						 		document.getElementById('alun').style.display='none';
 						 		document.getElementById('profe').style.display='inline-block';
 						 		document.getElementById('profe1').style.display='inline-block';
 						 		document.getElementById('profe2').style.display='inline-block';
@@ -181,7 +181,7 @@ if(!$interface->isAdministrador($_SESSION['usuarioId']) && !$interface->isOperad
 							</span>
 							<br>
 							<span class="input input--hoshi">
-								<input maxlength="10" name="endereco" onKeyPress="MascaraTelefone(cadastroAluno.tel);" class="input__field input__field--hoshi"
+								<input name="endereco" onKeyPress="MascaraTelefone(cadastroAluno.tel);" class="input__field input__field--hoshi"
 								type="text" id="input-4" required />
 								<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-6">
 									<span class="input__label-content input__label-content--hoshi">Endereço</span>
@@ -203,8 +203,30 @@ if(!$interface->isAdministrador($_SESSION['usuarioId']) && !$interface->isOperad
 								</label>
 							</span>
 							<br>
-								<span  style="display: none" id ="profe" class="input input--hoshi">
-								<input maxlength="11" name="instrumento"  class="input__field input__field--hoshi"
+							<span id ="login" class="input input--hoshi">
+								<input type="text" name="username"  class="input__field input__field--hoshi"
+								type="text" id="input-6" required />
+								<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-6">
+									<span class="input__label-content input__label-content--hoshi">Login</span>
+								</label>
+							</span>
+							<br>
+							<span id ="senha" class="input input--hoshi">
+								<input type="password" name="senha"  class="input__field input__field--hoshi"
+								type="text" id="input-6" required />
+								<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-6">
+									<span class="input__label-content input__label-content--hoshi">Senha</span>
+								</label>
+							</span>
+							<br>
+							<span id ="alun" class="input input--hoshi">
+								<select id="profdoaluno" name="professorId">
+			                		<?php $interface->selectTodosProfessores() ?>
+			                	</select>
+							</span>
+							<br>
+							<span  style="display: none" id ="profe" class="input input--hoshi">
+								<input name="instrumento"  class="input__field input__field--hoshi"
 								type="text" id="input-6" />
 								<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-6">
 									<span class="input__label-content input__label-content--hoshi">Instrumento</span>
@@ -212,7 +234,7 @@ if(!$interface->isAdministrador($_SESSION['usuarioId']) && !$interface->isOperad
 							</span>
 							<br>
 								<span style="display: none" id ="profe1" class="input input--hoshi">
-								<input maxlength="11" name="formacao"  class="input__field input__field--hoshi"
+								<input name="formacao"  class="input__field input__field--hoshi"
 								type="text" id="input-6" />
 								<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-6">
 									<span class="input__label-content input__label-content--hoshi">Formação</span>
@@ -220,10 +242,10 @@ if(!$interface->isAdministrador($_SESSION['usuarioId']) && !$interface->isOperad
 							</span>
 							<br>
 								<span style="display: none" id ="profe2" class="input input--hoshi">
-								<input maxlength="11" name="preferencia"  class="input__field input__field--hoshi"
+								<input name="preferencia"  class="input__field input__field--hoshi"
 								type="text" id="input-6" />
 								<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-6">
-									<span class="input__label-content input__label-content--hoshi">Preferencia</span>
+									<span class="input__label-content input__label-content--hoshi">Preferência</span>
 								</label>
 							</span>
 							<br>

@@ -126,6 +126,22 @@ class Aluno extends Usuario {
 		}
 	}
 
+	public function insertTemAula($professorId){
+		try {
+			global $db;
+
+			$insertAluno = $db->prepare("INSERT INTO TemAula(alunoId,professorId) VALUES (:alunoId,:professorId)");
+			$insertAluno->bindParam(":alunoId", $this->getId(), PDO::PARAM_INT);
+			$insertAluno->bindParam(":professorId", $professorId, PDO::PARAM_INT);
+			$insertAluno->execute();
+
+			return true;
+		}
+		catch (PDOException $e) {
+			return false;
+		}
+	}
+
 	public function update(){
 		try {
 			global $db;
@@ -146,6 +162,22 @@ class Aluno extends Usuario {
 			// $updateAluno = $db->prepare("UPDATE Aluno SET nome = :nome WHERE eventoId = :id");
 			// $updateAluno->bindParam(":id", $this->getId(), PDO::PARAM_INT);
 			// $updateAluno->execute();
+
+			return true;
+		}
+		catch(PDOException $e) {
+			return false;
+		}
+	}
+
+	public function updateTemAula($professorId){
+		try {
+			global $db;
+
+			$updateUsuario = $db->prepare("UPDATE TemAula SET usuarioId = :usuarioId, professorId = :professorId WHERE usuarioId = :id");
+			$updateUsuario->bindParam(":id", $this->getId(), PDO::PARAM_INT);
+			$updateUsuario->bindParam(":professorId", $professorId, PDO::PARAM_STR);
+			$updateUsuario->execute();
 
 			return true;
 		}

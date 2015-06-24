@@ -288,6 +288,26 @@ a:hover, a:active {
   color:  rgba(3,172,220,1);
 }
 
+#profdoaluno {
+  display: table;
+  width: 100%;
+  margin: 0.25em auto;
+  font-family: "Baron Neue",sans-serif;
+  font-size: 1em;
+  padding: 0.25em;
+  background: none;
+  border: 1px solid #B9C1CA;
+}
+
+#profdoaluno2 {
+  display: table;
+  width: 100%;
+  margin: 0em auto;
+  font-family: "Baron Neue",sans-serif;
+  padding: 0.25em;
+  background: none;
+  border: 1px solid #B9C1CA;
+}
 
 /* Shoko */
 

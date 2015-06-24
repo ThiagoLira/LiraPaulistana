@@ -39,7 +39,7 @@ if(!$interface->isAdministrador($_SESSION['usuarioId']) && !$interface->isOperad
 
 	<section id="visualizarRepositorio" class="section-white">
         <h1 class="tituloPagina">Alteração de cadastro</h1>
-		<form  name="pesquisaOperador" method="post" action="pesquisar.php">Digite aqui o nome do Aluno/Professor que deseja procurar:
+		<form  name="pesquisaOperador" method="post" action="pesquisar.php">Digite aqui o nome do Aluno que deseja procurar:
 			
 		<input type="text" name="username">
 
@@ -47,6 +47,7 @@ if(!$interface->isAdministrador($_SESSION['usuarioId']) && !$interface->isOperad
 
 		<button type = "submit"  > Pesquisar</button>
 		</form>		
+		<p><a href="meuPainel.php">Voltar a meu painel.</a></p>
 	</section>
 
 

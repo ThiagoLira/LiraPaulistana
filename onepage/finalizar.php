@@ -9,7 +9,7 @@ if(!$interface->checkLogin()){
     header("Location: loginAreaUsuario.php");
     exit();
 }
-if(!$interface->isProfessor($_SESSION['usuarioId'])){
+if(!$interface->isAdministrador($_SESSION['usuarioId']) && !$interface->isOperador($_SESSION['usuarioId'])){
     header("Location: meuPainel.php");
     exit();
 }
@@ -56,11 +56,14 @@ if(!$interface->isProfessor($_SESSION['usuarioId'])){
 			$telefone = $_POST['telefone'];
 			$celular = $_POST['celular'];
 			$email = $_POST['email'];
+            $username = $_POST['username'];
+            $hash = md5($_POST['senha']);
+            $professorId = $_POST['professorId'];
 
 			if($data == null){
-				$interface->updateAluno($alunoId, $nome, "00/00/00", $rg, $cpf, $endereco, $telefone, $celular, $email);
+				$interface->updateAluno($alunoId, $nome, "00/00/00", $rg, $cpf, $endereco, $telefone, $celular, $email, $username, $hash, $professorId);
 			} else {
-				$interface->updateAluno($alunoId, $nome, $data, $rg, $cpf, $endereco, $telefone, $celular, $email);
+				$interface->updateAluno($alunoId, $nome, $data, $rg, $cpf, $endereco, $telefone, $celular, $email, $username, $hash, $professorId);
 			}
 		?>
             <p><a href="meuPainel.php">Voltar a meu painel.</a></p>

@@ -21,7 +21,7 @@
 		
 		//CRUD de Aluno-----------------------------------------------------//
 
-		public function insertAluno($nome, $dataNascimento, $rg, $cpf, $endereco, $telefone, $celular, $email){	
+		public function insertAluno($nome, $dataNascimento, $rg, $cpf, $endereco, $telefone, $celular, $email, $username, $hash, $professorId){	
 		$aluno = new Aluno();		
 	
 		$aluno->setNome($nome);
@@ -34,11 +34,21 @@
 		$aluno->setEmail($email);
 
 		$aluno->insert();
+
+		$login = new Login();
+
+		$login->setUsuarioId($aluno->getId());
+		$login->setUsername($username);
+		$login->setHash($hash);
+
+		$login->insert();
+
+		$aluno->insertTemAula($professorId);
 		
 		echo "Informações sobre o aluno adicionadas com sucesso";
 		}
 		
-		public function updateAluno($usuarioId, $nome, $dataNascimento, $rg, $cpf, $endereco, $telefone, $celular, $email){
+		public function updateAluno($usuarioId, $nome, $dataNascimento, $rg, $cpf, $endereco, $telefone, $celular, $email, $username, $hash, $professorId){
 			$aluno = new Aluno();		
 			$aluno->select($usuarioId);		
 	
@@ -52,6 +62,18 @@
 			$aluno->setEmail($email);
 
 			$aluno->update();
+
+			if(isset($hash) && $hash != NULL){
+				$login = new Login();
+				
+				$login->setUsuarioId($aluno->getId());
+				$login->setUsername($username);
+				$login->setHash($hash);
+
+				$login->update();
+			}
+
+			$aluno->updateTemAula($professorId);
 		
 			echo "<p class='msg'>Informações sobre o aluno atualizadas com sucesso.</p>";
 		}
@@ -226,7 +248,7 @@
 		
 		//CRUD de Professor-----------------------------------------------------//
 
-		public function insertProf($nome, $dataNascimento, $rg, $cpf, $endereco, $telefone, $celular, $email, $instrumento, $formacao, $pref){	
+		public function insertProf($nome, $dataNascimento, $rg, $cpf, $endereco, $telefone, $celular, $email, $username, $hash, $instrumento, $formacao, $pref){	
 		$prof = new Professor();		
 	
 		$prof->setNome($nome);
@@ -243,6 +265,14 @@
 		
 
 		$prof->insert();
+
+		$login = new Login();
+
+		$login->setUsuarioId($prof->getId());
+		$login->setUsername($username);
+		$login->setHash($hash);
+
+		$login->insert();
 		
 		echo "Informações sobre o professor adicionadas com sucesso";
 		}		
@@ -948,6 +978,26 @@
 		}
 	}
 
+	public function selectTodosProfessores($selecionado = null) {
+		try{
+			global $db;
+			
+			$select = $db->prepare("SELECT Usuario.usuarioId, Usuario.nome FROM Usuario INNER JOIN Professor ON Usuario.usuarioId = Professor.usuarioId");
+			$select->execute();
+
+			$todosProfessores = $select->fetchAll();
+
+			echo '<option selected disabled>Escolha o professor do aluno</option>';
+
+			foreach($todosProfessores as $umProfessor){
+				if($umProfessor['usuarioId'] == $selecionado) echo '<option value="'.$umProfessor['usuarioId'].'" selected>'.$umProfessor['nome'].'</option>';
+				else echo '<option value="'.$umProfessor['usuarioId'].'">'.$umProfessor['nome'].'</option>';
+			}
+		} catch(PDOException $e){
+			var_dump($e);
+		}
+	}
+
 	//Select com alunos-----------------------------------------------------
 	public function alunosPorProfessor($professorId) {
 		try{
@@ -974,7 +1024,8 @@
 		try{
 			global $db;
 
-			$select = $db->prepare("SELECT * FROM Usuario WHERE usuarioId = :id");
+			$select = $db->prepare("SELECT Usuario.usuarioId, Usuario.nome, Usuario.dataNascimento, Usuario.rg, Usuario.cpf, Usuario.endereco, Usuario.telefone, Usuario.celular, Usuario.email, Login.username, TemAula.professorId 
+				FROM Usuario INNER JOIN Login ON Usuario.usuarioId = Login.usuarioId INNER JOIN TemAula ON TemAula.alunoId = Usuario.usuarioId WHERE Usuario.usuarioId = :id");
 			$select->bindParam(":id", $id, PDO::PARAM_INT);
 			$select->execute();
 

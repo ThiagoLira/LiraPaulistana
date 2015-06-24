@@ -4,7 +4,7 @@ require_once "conexao.php";
 class Login {
 	private $usuarioId;
 	private $username;
-	private $senha;
+	private $hash;
 
 	public function getUsuarioId(){
 		return $this->usuarioId;
@@ -25,6 +25,40 @@ class Login {
 	}
 	public function setHash($hash){
 		$this->hash = $hash;
+	}
+
+	public function insert(){
+		try {
+			global $db;
+
+			$insertLogin = $db->prepare("INSERT INTO Login(username,hash,usuarioId) VALUES (:username,:hash,:usuarioId)");
+			$insertLogin->bindParam(":username", $this->getUsername(), PDO::PARAM_STR);
+			$insertLogin->bindParam(":hash", $this->getHash(), PDO::PARAM_STR);
+			$insertLogin->bindParam(":usuarioId", $this->getUsuarioId(), PDO::PARAM_INT);
+			$insertLogin->execute();
+
+			return true;
+		}
+		catch (PDOException $e) {
+			return false;
+		}
+	}
+
+	public function update(){
+		try {
+			global $db;
+
+			$updateEvento = $db->prepare("UPDATE Login SET username = :username, hash = :hash WHERE usuarioId = :id");
+			$updateEvento->bindParam(":username", $this->getUsername(), PDO::PARAM_STR);
+			$updateEvento->bindParam(":hash", $this->getHash(), PDO::PARAM_STR);
+			$updateEvento->bindParam(":id", $this->getUsuarioId(), PDO::PARAM_INT);
+			$updateEvento->execute();
+
+			return true;
+		}
+		catch (PDOException $e) {
+			return false;
+		}
 	}
 
 	public function SignIn() {

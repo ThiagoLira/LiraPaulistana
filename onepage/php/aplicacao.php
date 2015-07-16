@@ -513,6 +513,28 @@
 	}
 
 	//Login ----------------------------------------------
+	
+	
+	public function returnHash($username){
+		$login = new Login();
+		$login->setUsername($username);
+		
+		return $login->ReturnHash();
+		
+		
+	}
+	
+	
+	
+	public function loginUser($username){
+		$login = new Login();
+		$login->setUsername($username);
+		
+
+		return $login->SignIn();
+	}
+	
+	
 	public function login($username, $hash){
 		$login = new Login();
 		$login->setUsername($username);

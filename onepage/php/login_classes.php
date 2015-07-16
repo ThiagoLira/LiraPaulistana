@@ -60,15 +60,43 @@ class Login {
 			return false;
 		}
 	}
-
+	
+	
+	
+	public function ReturnHash(){
+		global $db;
+		
+		
+		try{
+			$login = $db->prepare("SELECT * FROM Login where username = :username ") or die(mysql_error());
+			$login->bindParam(":username", $this->getUsername());
+			$login->execute();
+			
+			$row=  $login->fetch(PDO::FETCH_ASSOC);
+			
+			
+			return $row['hash'];
+			
+			
+			}	
+			
+			catch(PDOException $e){
+			//var_dump($e);
+			return false;
+		}
+		
+		
+	}
+	
+	
 	public function SignIn() {
 		global $db;
 
 		try {
-			$login = $db->prepare("SELECT * FROM Login where username = :username AND hash = :hash") or die(mysql_error());
+			$login = $db->prepare("SELECT * FROM Login where username = :username") or die(mysql_error());
+			
 			$login->bindParam(":username", $this->getUsername());
-			$login->bindParam(":hash", $this->getHash());
-
+			
 			$login->execute();
 
 			$row = $login->fetch(PDO::FETCH_ASSOC);

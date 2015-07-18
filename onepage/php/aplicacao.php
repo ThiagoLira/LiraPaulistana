@@ -2,13 +2,14 @@
 	require_once "usuario_classes.php";
 	require_once "evento_classes.php";
 	require_once "repositorio_classes.php";
+	require_once 'php/PasswordLib.phar';
 	require_once "login_classes.php";
 	require_once "dropbox-sdk/Dropbox/autoload.php";
 	use \Dropbox as dbx;
 
 	$appInfo = dbx\AppInfo::loadFromJsonFile("config.json");
 	$webAuth = new dbx\WebAuthNoRedirect($appInfo, "PHP-Example/1.0");
-
+	$lib = new PasswordLib\PasswordLib(); 
 	$authorizeUrl = $webAuth->start();
 	$accessToken = "Fqjo92WehEAAAAAAAAAACOkTKMu5NYdiGR37SR2wYmjSBFRizz6FKCgO4DXwFJQn";
 
@@ -39,7 +40,8 @@
 
 		$login->setUsuarioId($aluno->getId());
 		$login->setUsername($username);
-		$login->setHash($hash);
+		$hash2 = $lib->createPasswordHash($hash);
+		$login->setHash($hash2);
 
 		$login->insert();
 

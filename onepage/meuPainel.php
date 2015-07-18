@@ -2,14 +2,19 @@
 require_once "php/aplicacao.php";
 
 session_start();
-
+ini_set('display_errors',1);  
+error_reporting(E_ALL);
 $interface = new Aplicacao();
 
 if(!$interface->checkLogin()){
     header("Location: loginAreaUsuario.php");
     exit();
 }
+
 ?>
+
+
+
 <!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->

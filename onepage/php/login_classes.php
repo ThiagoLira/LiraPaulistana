@@ -129,4 +129,32 @@ class Login {
             return false;
         }
     }
+
+
+
+    public function isLogin(){
+    	global $db;
+
+
+    	try{
+    	$login = $db->prepare("SELECT * FROM Login where username = :username") or die(mysql_error());
+    	$login->bindParam(":username", $this->getUsername());
+    	$login->execute();
+    	$row = $login->fetch(PDO::FETCH_ASSOC);
+
+    	if($row){
+    		return true;
+    	}
+    	else {
+    		return false;
+    	}
+
+    }
+
+catch(PDOException $e){
+			//var_dump($e);
+			return false;
+		}
+}
+
 }

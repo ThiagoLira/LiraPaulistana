@@ -29,7 +29,7 @@ $instrumento = $_POST['instrumento'];
 $formacao = $_POST['formacao'];
 $preferencia = $_POST['preferencia'];
 $username = $_POST['username'];
-$hash = md5($_POST['senha']);
+$hash = $_POST['senha'];
 $professorId = $_POST['professorId'];
 
 if ($profaluno == "Aluno"){

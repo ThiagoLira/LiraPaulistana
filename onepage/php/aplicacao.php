@@ -9,7 +9,8 @@
 
 	$appInfo = dbx\AppInfo::loadFromJsonFile("config.json");
 	$webAuth = new dbx\WebAuthNoRedirect($appInfo, "PHP-Example/1.0");
-	$lib = new PasswordLib\PasswordLib(); 
+	ini_set('display_errors',1);  
+	error_reporting(E_ALL);
 	$authorizeUrl = $webAuth->start();
 	$accessToken = "Fqjo92WehEAAAAAAAAAACOkTKMu5NYdiGR37SR2wYmjSBFRizz6FKCgO4DXwFJQn";
 
@@ -23,7 +24,8 @@
 		//CRUD de Aluno-----------------------------------------------------//
 
 		public function insertAluno($nome, $dataNascimento, $rg, $cpf, $endereco, $telefone, $celular, $email, $username, $hash, $professorId){	
-		$aluno = new Aluno();		
+		$aluno = new Aluno();	
+		$lib = new PasswordLib\PasswordLib(); 	
 	
 		$aluno->setNome($nome);
 		$aluno->setDataNascimento($dataNascimento);
@@ -51,7 +53,8 @@
 		}
 		
 		public function updateAluno($usuarioId, $nome, $dataNascimento, $rg, $cpf, $endereco, $telefone, $celular, $email, $username, $hash, $professorId){
-			$aluno = new Aluno();		
+			$aluno = new Aluno();	
+			$lib = new PasswordLib\PasswordLib(); 	
 			$aluno->select($usuarioId);		
 	
 			$aluno->setNome($nome);
@@ -70,7 +73,8 @@
 				
 				$login->setUsuarioId($aluno->getId());
 				$login->setUsername($username);
-				$login->setHash($hash);
+				$hash2 = $lib->createPasswordHash($hash);
+				$login->setHash($hash2);
 
 				$login->update();
 			}
@@ -268,11 +272,15 @@
 
 		$prof->insert();
 
+		$lib = new PasswordLib\PasswordLib(); 
+
 		$login = new Login();
 
 		$login->setUsuarioId($prof->getId());
 		$login->setUsername($username);
-		$login->setHash($hash);
+		$hash2 = $lib->createPasswordHash($hash);
+		$login->setHash($hash2);
+
 
 		$login->insert();
 		

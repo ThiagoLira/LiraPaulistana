@@ -27,17 +27,21 @@ if(isset($_POST['user']) && isset($_POST['pass'])){
     //$_SESSION['erro'] = $interface->returnHash($username);
     
     
-    
+    $login = new Login();
+
+    $login->setUsername($username);
+
+
+    $existe = $login->isLogin(); //variavel booleana
+
+    if($existe){
     $hash = $interface->returnHash($username);
-    
-    
-    
-    
-    
     if( $lib->verifyPasswordHash($senha, $hash)    ){
         $interface->loginUser($username);
         header('Location: meuPainel.php');
         exit();
+    }
+
     }
     else{
 

@@ -35,7 +35,7 @@ $professorId = $_POST['professorId'];
 if ($profaluno == "Aluno"){
 	if(isset($nome) && isset($rg) && isset($cpf) && isset($telefone) && isset($nascimento) && isset($celular) && isset($endereco) && isset($email) && isset($username) && isset($hash) && isset($professorId)){
 		$interface->insertAluno($nome, $nascimento, $rg, $cpf, $endereco, $telefone, $celular, $email, $username, $hash, $professorId);
-
+		$interface->marcaPacote(24,$nome,"09/01/2015 00:00","Sala 4","13:00","Intermediário","Top");
 		$_SESSION['msg'] = "Aluno cadastrado!";
 	}
 	else {

@@ -43,8 +43,11 @@
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 	<!-- Estilo do Input Field-->
 	<link rel="stylesheet" type="text/css" href="css/shoko.css" />
+    <!-- Estilo do Tumblr-->
+    <link rel="stylesheet" type="text/css" href="css/tumblr.css" />
 
-
+    <pre class="prettyprint"><script type="text/javascript" src="http://nodoff.tumblr.com/api/read/json"></script>
+2 </pre>
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -97,64 +100,11 @@
                                 <li><a data-scroll href="#about">Sobre</a></li>
                                 <li><a data-scroll href="#works">Nosso Trabalho</a></li>
                                 <li><a data-scroll href="#contact">Contato</a></li>
+                                  <li><a data-scroll href="#blog">Blog</a></li>
                                 <li id="teste3"><a data-scroll href="meuPainel.php" id="teste2">Meu Painel</a>
 								
 								
-								<!-- Lista rolante -->
 
-
-								<!-- Login FAIL 
-									<div class = "login-section" id="logbar">
-
-										<form method="POST" action="login.php">
-											
-
-
-											<table>
-												
-												<tr>
-													<span class="input input--shoko">
-                                                    					<input class="input__field input__field--shoko" type="text" id="input-name" name = "input-name"/>
-                                                    					<label class="input__label input__label--shoko" for="input-4">
-                                                    						<span class="input__label-content input__label-content--shoko">Usuario</span>
-                                                    					</label>
-                                                    					<svg class="graphic graphic--shoko" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
-                                                    						<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
-                                                    						<path d="M0,2.5c0,0,298.666,0,399.333,0C448.336,2.5,513.994,13,597,13c77.327,0,135-10.5,200.999-10.5c95.996,0,402.001,0,402.001,0"/>
-                                                    					</svg>
-                                                    </span>
-                                                    												
-                                                </tr>
-												
-												<tr>
-													<span class="input input--shoko">
-                                                                        <input class="input__field input__field--shoko" type="password" id="input-pass" name = "input-pass"/>
-                                                                        <label class="input__label input__label--shoko" for="input-4">
-                                                                            <span class="input__label-content input__label-content--shoko">Senha</span>
-                                                                        </label>
-                                                                        <svg class="graphic graphic--shoko" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
-                                                                            <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
-                                                                            <path d="M0,2.5c0,0,298.666,0,399.333,0C448.336,2.5,513.994,13,597,13c77.327,0,135-10.5,200.999-10.5c95.996,0,402.001,0,402.001,0"/>
-                                                                        </svg>
-                                                    </span>
-												</tr>
-
-											</table>
-
-
-											<button id="botaologin" type="submit">Login</button>
-
-                                                
-											
-											<button>Esqueci Minha Senha</button>
-
-
-										</form>
-
-
-									</div>
-			                    
-								 Login FAIL -->
 
 
 
@@ -382,17 +332,7 @@
 
 
 
-<!-- Sessao teste -->
-       
-            
-              <section class="content bgcolor-6">
-				
-			</section>
 
-       
-
-
-<!-- Sessao teste FIM-->
 
 
 
@@ -552,7 +492,46 @@
 
 
 
+        <!-- Sessao blog -->
+       
+            
+        <section id = "blog" >
 
+             
+                <div class="container-tumblr">
+
+                        <div  class="section-title ">
+                                    <h3 >O que acontece na  <br> <span class="baron">Lira Paulistana</span></h3>
+                                    
+                                    
+                        </div><!-- end section title -->
+                         <script type="text/javascript">
+                         // The variable "tumblr_api_read" is now set to your tumblr feed.
+
+                
+                            for (i =0; i<=2 ; i++) { //ultimos 3 posts!
+
+                            document.write(
+
+                                    '<h3 class = "tumblr-title"> ' + tumblr_api_read['posts'][i]['regular-title'] + '</h3>'
+                                            +
+                                    '<h3 class = "tumblr-text"> ' + tumblr_api_read['posts'][i]['regular-body'] + '</h3>' +
+
+                                    '<div class = "tumblr-link"> <a  href="' + tumblr_api_read['posts'][i]['url'] + 
+                                            '">Veja no nosso blog!</a> </div>'
+                         );
+                        }
+                         </script>
+
+              
+             
+                </div>        
+        </section>
+
+       
+
+
+<!-- Sessao blog FIM-->
 
         
         <section id="contact" class="section-white">

@@ -344,6 +344,12 @@
 
 
 	//CRUD de Aula-----------------------------------------------------//
+
+
+
+
+
+
 	public function insertAula($data, $horario, $instrumento, $nivel, $sala, $tipo, $presenca, $alunoId, $professorId){	
 		$aula = new Aula();		
 	
@@ -410,6 +416,80 @@
 			}			
 	}
 	
+	//Marca um pacote de aulas
+	public function marcaPacote($pacote,$nomeAluno,$initDate,$sala,$horario,$nivel,$tipo){  //marca 6 meses (pacote == 24) ou 1 (pacote == 48)  ano de aulas para determinado aluno
+
+		try{
+
+
+			global $db;
+			
+			$select = $db->prepare("SELECT Usuario.nome FROM Usuario WHERE Usuario.nome = :nome");
+			$select->bindParam(":nome", $nomeAluno, PDO::PARAM_INT);
+			$select->execute();
+
+
+			$umUser = $select->fetch(PDO::FETCH_ASSOC);
+
+			$select = $db->prepare("SELECT TemAula.professorId FROM TemAula WHERE TemAula.alunoId = :id");
+			$select->bindParam(":id", $umUser['usuarioId'], PDO::PARAM_INT);
+			$select->execute();
+
+
+			$prof = $select->fetch(PDO::FETCH_ASSOC);
+
+
+			$data = $initDate;
+
+
+			/*
+			DAR UM JEITO DE TROCAR DE MM/DD/YYYY para DD/MM/YYYY
+
+			*/
+			for ($i =1;$i<=$pacote;$i++){ 
+			//$data comeca no formato abaixo!	
+			//MM/DD/YYYY HH:mm
+
+
+			$this->insertAula($data, $horario, $umUser['instrumento'], $nivel, $sala, $tipo, 0, $umUser['usuarioId'], $prof['professorId']);
+
+			$dia = strtotime($data) + 24*3600*7 ; //adiciona 7 dias na conta
+
+			$data =  date("m/d/Y   H:i", $dia);
+
+			}
+			
+
+
+			
+
+			
+
+		}
+
+		 catch(PDOException $e){
+			var_dump($e);
+			}
+
+		
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	//CRUD de Evento Musical-----------------------------------------------------//
 	public function insertEventoMusical($data, $horario, $nome, $local, $descricao){	
 		$eventoMusical = new EventoMusical();		
@@ -988,6 +1068,9 @@
 			var_dump($e);
 		}
 	}
+
+
+	
 
 	//Select com professores-----------------------------------------------------
 	public function professoresPorInstrumento($instrumento) {

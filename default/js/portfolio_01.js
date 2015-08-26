@@ -25,6 +25,7 @@
                         height: height
                     });
                 });
+                
                 return columnWidth;
             }
                         
@@ -56,4 +57,20 @@
             };
         isotope();
         $(window).smartresize(isotope);
+    }(jQuery));
+
+
+    $( document ).ready(function() { //carrega algum item da lista primeiro
+
+            function refreshWaypoints() {
+                setTimeout(function() {
+                }, 1000);   
+                }
+
+        var $container = $('.masonry_wrapper');
+
+        $('nav.portfolio-filter ul a[data-filter=".predio"]').addClass('active');
+        $container.isotope({ filter: ".predio" }, refreshWaypoints()); //ALTERAR PARA NOME DO ITEM DA LISTA QUE DEVE APARECER PRIMEIRO
+        
+    
     }(jQuery));

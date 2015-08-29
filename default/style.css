@@ -1630,10 +1630,12 @@ a:hover,a:focus {
   height: 100% !important;
   width: 100% ;
   position: relative;
+  
   z-index: -2;
 }
 
 .isotope-item {
+  margin-bottom: 100px !important;  /*EU MUDEI ISSO SE DER MERDA TIRAR ESSA LINHA */
   z-index:2;
 }
 

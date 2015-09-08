@@ -4248,6 +4248,27 @@ a,
     background: transparent;
 }
 
+
+/*     Texto de QUEM SOMOS*/
+
+#quemsomos {
+
+
+  font-size: 16px !important;
+  color: black;
+
+
+
+}
+
+
+#textoazul {
+
+  color: rgba(3,172,220,1);
+  font-style: italic;
+
+}
+
 /* ----------------------------------------------------
   DARK STYLES
 

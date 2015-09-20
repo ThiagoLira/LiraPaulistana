@@ -47,6 +47,32 @@
     <link rel="stylesheet" type="text/css" href="css/tumblr.css" />
 
     <pre class="prettyprint"><script type="text/javascript" src="http://nodoff.tumblr.com/api/read/json"></script>
+
+
+     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+    <script>
+  $(function() {
+    $( "#dialog" ).dialog({
+      autoOpen: false,
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      hide: {
+        effect: "explode",
+        duration: 1000
+      }
+    });
+ 
+    $( "#opener" ).click(function() {
+      $( "#dialog" ).dialog( "open" );
+    });
+  });
+  </script>
+
 2 </pre>
 
 
@@ -448,11 +474,223 @@
             
 
         </section><!-- end section -->
+<!-- SECTION TEAM -->
+
+        <section class="section-white clearfix">
+            <div class="section-title">
+                <h3>Nossa Equipe</h3>
+                <div class="divider"></div>
+                <p>Curabitur eu adipiscing lacus, a iaculis diam. Nullam placerat blandit auctor. Nulla accumsan ipsum et nibh rhoncus, eget tempus sapien<br> ultricies. Donec mollis lorem vehicula.</p>
+            </div><!-- end section title -->
+            <!-- bootFolio content  --> 
+            <div id="second" class="container bf">
+                <!-- bootFolio category filter -->
+                <ul class="filter">
+                    <li><a data-cat="all" href="#" class="active">All</a></li>
+                    <li><a class="yellow-color" data-cat="cat1" href="#">Fundadores</a></li>
+                    <li><a class="purple-color" data-cat="cat2" href="#">Professores</a></li>
+                    
+                </ul>
+                <!-- bootFolio category filter -->
+                
+                <!-- bootFolio Items -->
+                <ul id="team-portfolio" class="items row-fluid">
+                    <!-- single item -->
+                    <li class="cat1">
+                        <div class="bf-single-item">
+                            <img src="../default/demos/team_01.jpg" alt="">
+                            <div class="caption yellow-bg">
+                                <div class="cap-in">
+                                    
+                                    <div class="caps-desc">
+                                        <h3><a href="#" title="">John DOE</a></h3>
+                                        <p>Photographers</p>
+                                    </div><!-- end caps -->
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- single item -->  
+                    <li  class="cat2">
+                        <div  class="bf-single-item">
+                        
+                            <img src="../default/demos/team_02.jpg" alt="">
+                            <div class="caption purple-bg">
+                                <div class="cap-in">
+                                    
+                                    <div class="caps-desc">
+                                        <h3><a href="#" title="">Jenny DOE</a></h3>
+                                        <p>PSD Designer</p>
+                                    </div><!-- end caps -->
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- single item -->  
+                    <li class="cat3">
+                        <div class="bf-single-item">
+                            <img src="../default/demos/team_03.jpg" alt="">
+                            <div class="caption green-bg">
+                                <div class="cap-in">
+                                   
+                                    <div class="caps-desc">
+                                        <h3><a href="#" title="">John DOE</a></h3>
+                                        <p>PSD Designer</p>
+                                    </div><!-- end caps -->
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- single item -->
+                    <li class="cat1">
+                        <div class="bf-single-item">
+                            <img src="../default/demos/team_04.jpg" alt="">
+                            <div class="caption yellow-bg">
+                                <div class="cap-in">
+                                    
+                                    <div class="caps-desc">
+                                        <h3><a href="#" title="">John DOE</a></h3>
+                                        <p>Photographers</p>
+                                    </div><!-- end caps -->
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- single item -->  
+                    <li class="cat2">
+                        <div class="bf-single-item">
+                            <img src="../default/demos/team_05.jpg" alt="">
+                            <div class="caption purple-bg">
+                                <div class="cap-in">
+                                    
+                                    <div class="caps-desc">
+                                        <h3><a href="#" title="">Jenny DOE</a></h3>
+                                        <p>PSD Designer</p>
+                                    </div><!-- end caps -->
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- single item -->  
+                    <li class="cat3">
+                        <div class="bf-single-item">
+                            <img src="../default/demos/team_06.jpg" alt="">
+                            <div class="caption green-bg">
+                                <div class="cap-in">
+                                   
+                                    <div class="caps-desc">
+                                        <h3><a href="#" title="">John DOE</a></h3>
+                                        <p>PSD Designer</p>
+                                    </div><!-- end caps -->
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- single item -->
+                    <li class="cat1">
+                        <div class="bf-single-item">
+                            <img src="../default/demos/team_07.jpg" alt="">
+                            <div class="caption yellow-bg">
+                                <div class="cap-in">
+                                  
+                                    <div class="caps-desc">
+                                        <h3><a href="#" title="">John DOE</a></h3>
+                                        <p>Photographers</p>
+                                    </div><!-- end caps -->
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- single item -->  
+                    <li class="cat2">
+                        <div class="bf-single-item">
+                            <img src="../default/demos/team_08.jpg" alt="">
+                            <div class="caption purple-bg">
+                                <div class="cap-in">
+                                   
+                                    <div class="caps-desc">
+                                        <h3><a href="#" title="">Jenny DOE</a></h3>
+                                        <p>PSD Designer</p>
+                                    </div><!-- end caps -->
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- single item -->  
+                    <li class="cat3">
+                        <div class="bf-single-item">
+                            <img src="../default/demos/team_09.jpg" alt="">
+                            <div class="caption green-bg">
+                                <div class="cap-in">
+                                 
+                                    <div class="caps-desc">
+                                        <h3><a href="#" title="">John DOE</a></h3>
+                                        <p>PSD Designer</p>
+                                    </div><!-- end caps -->
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- single item -->  
+                    <li class="cat1">
+                        <div class="bf-single-item">
+                            <img src="demos/team_10.jpg" alt="">
+                            <div class="caption yellow-bg">
+                                <div class="cap-in">
+                                    </a>
+                                    <div class="caps-desc">
+                                        <h3><a href="#" title="">John DOE</a></h3>
+                                        <p>PSD Designer</p>
+                                    </div><!-- end caps -->
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- single item -->  
+                    <li class="cat1">
+                        <div class="bf-single-item">
+                            <img src="demos/team_11.jpg" alt="">
+                            <div class="caption yellow-bg">
+                                <div class="cap-in">
+                                    </a>
+                                    <div class="caps-desc">
+                                        <h3><a href="#" title="">John DOE</a></h3>
+                                        <p>PSD Designer</p>
+                                    </div><!-- end caps -->
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- single item -->  
+                    <li class="cat2">
+                        <div class="bf-single-item">
+                            <img src="demos/team_12.jpg" alt="">
+                            <div class="caption purple-bg">
+                                <div class="cap-in">
+                                    </a>
+                                    <div class="caps-desc">
+                                        <h3><a href="#" title="">John DOE</a></h3>
+                                        <p>PSD Designer</p>
+                                    </div><!-- end caps -->
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- single item -->  
+                </ul>
+            </div>
+            <!-- //bootFolio content -->
+           
+
+        </section><!-- end section white -->
+
+<!-- end section -->
+
 
 
 
         <!-- Sessao blog -->
-       
+
             
         <section id = "blog" >
 

@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Creativ - Homepage</title>
 
     <!-- Favicons
@@ -89,24 +89,24 @@
                 <div class="clearfix"></div>
                 
                 <div class="section-title">
-                    <h3>Say Hello</h3>
+                    <h3>Mande o seu currículo para nós!</h3>
                     <div class="divider"></div>
-                    <p>Curabitur eu adipiscing lacus, a iaculis diam. Nullam placerat blandit auctor. Nulla accumsan ipsum et nibh rhoncus, eget tempus sapien<br> ultricies. Donec mollis lorem vehicula.</p>
+                    
                 </div><!-- end section title -->
 
                 <div class="general-form">
                 <div id="message"></div>
                     <form id="contactform" action="contact.php" name="contactform" method="post" enctype="multipart/form-data"  >
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                            <label>Enter your name <span>*</span></label>
+                            <label>Digite o seu nome<span>*</span></label>
                             <input type="text" name="name" id="name" class="form-control" placeholder="Name"> 
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                            <label>Enter your e-mail <span>*</span></label>
+                            <label>Digite o seu email<span>*</span></label>
                             <input type="text" name="email" id="email" class="form-control" placeholder="Email Address">
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                            <label>Enter your website</label>
+                            <label>Digite o seu site (Opcional)</label>
                             <input type="text" name="website" id="website" class="form-control" placeholder="Website"> 
                         </div>
 
@@ -120,12 +120,9 @@
 
 
 
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                            <label>Enter subject <span>*</span></label>
-                            <input type="text" name="subject" id="subject" class="form-control" placeholder="Subject">  
-                        </div>
+            
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <label>Message goes here <span>*</span></label>
+                            <label>Informações adicionais<span>*</span></label>
                             <textarea class="form-control" name="comments" id="comments" rows="6" placeholder="Message"></textarea>
                             <button type="submit" name = "submit" value="submit" id="submit" class="btn btn-lg btn-primary pull-right border-radius">GET A QUOTE</button>
                         </div>

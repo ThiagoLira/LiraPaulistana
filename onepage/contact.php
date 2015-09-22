@@ -1,5 +1,10 @@
 <?php
 
+require_once('PHPMailer-master/class.phpmailer.php');
+require_once('PHPMailer-master/class.smtp.php');
+
+//define("UPLOAD_DIR", "uploads/");
+
 if(!$_POST) exit;
 
 // Email address verification, do not edit.
@@ -9,18 +14,52 @@ function isEmail($email) {
 
 if (!defined("PHP_EOL")) define("PHP_EOL", "\r\n");
 
+
+/*
+ if(isset($_POST['submit'])){
+
+    $name       = $_FILES['file']['name'];  
+    $temp_name  = $_FILES['file']['tmp_name'];  
+    if(isset($name)){
+        if(!empty($name)){      
+            $location = 'uploads/';      
+            if(move_uploaded_file($temp_name, $location.$name)){
+                echo 'uploaded/';
+            }
+        }       
+    }  else {
+        echo 'please uploaded';
+    }
+}
+*/
+
+echo sys_get_temp_dir ();
+
+
+
 $name     = $_POST['name'];
-$email    = $_POST['email'];
+$email2    = $_POST['email'];
 $subject  = $_POST['subject'];
 $comments = $_POST['comments'];
+//$curriculo = $_POST['file'];
+$curriculo= $_FILES["file"];
+
+
+$target_dir = "/var/tmp/";
+
+
+$target_file = $target_dir . basename($_FILES["file"]["name"]);
+
+
+
 
 if(trim($name) == '') {
 	echo '<div class="error_message">Attention! You must enter your name.</div>';
 	exit();
-} else if(trim($email) == '') {
+} else if(trim($email2) == '') {
 	echo '<div class="error_message">Attention! Please enter a valid email address.</div>';
 	exit();
-} else if(!isEmail($email)) {
+} else if(!isEmail($email2)) {
 	echo '<div class="error_message">Attention! You have enter an invalid e-mail address, try again.</div>';
 	exit();
 }
@@ -38,51 +77,76 @@ if(get_magic_quotes_gpc()) {
 }
 
 
-// Configuration option.
-// Enter the email address that you want to emails to be sent to.
-// Example $address = "joe.doe@yourdomain.com";
-
-//$address = "example@themeforest.net";
-$address = "addyouremail@yoursite.com";
 
 
-// Configuration option.
-// i.e. The standard subject will appear as, "You've been contacted by John Doe."
-
-// Example, $e_subject = '$name . ' has contacted you via Your Website.';
-
-$e_subject = 'You\'ve been contacted by ' . $name . '.';
 
 
-// Configuration option.
-// You can change this if you feel that you need to.
-// Developers, you may wish to add more fields to the form, in which case you must be sure to add them here.
 
-$e_body = "You have been contacted by $name with regards to $subject, their additional message is as follows." . PHP_EOL . PHP_EOL;
-$e_content = "\"$comments\"" . PHP_EOL . PHP_EOL;
-$e_reply = "You can contact $name via email, $email";
 
-$msg = wordwrap( $e_body . $e_content . $e_reply, 70 );
+$email = new PHPMailer();
 
-$headers = "From: $email" . PHP_EOL;
-$headers .= "Reply-To: $email" . PHP_EOL;
-$headers .= "MIME-Version: 1.0" . PHP_EOL;
-$headers .= "Content-type: text/plain; charset=utf-8" . PHP_EOL;
-$headers .= "Content-Transfer-Encoding: quoted-printable" . PHP_EOL;
 
-if(mail($address, $e_subject, $msg, $headers)) {
+/* Para testes
+echo $email2 ;
+echo " " ;
+echo gettype ( $email2 );
+echo " " ;
+echo $name ;
+echo " " ;
+echo gettype ( $name );
+echo " " ;
+echo $subject ;
+echo " " ;
+echo gettype ( $subject );
+echo " " ;
+echo $comments;
+echo " " ;
+echo gettype ( $comments );
+echo " " ;
+*/
+echo ( $curriculo );
+//move_uploaded_file($curriculo,)
 
-	// Email has sent successfully, echo a success page.
+$email->From      = $email2;
+$email->FromName  = $name;
+$email->Subject   = $subject;
+$email->Body      = $comments;
+$email->AddAddress( 'thlira15@gmail.com' );
 
-	echo "<fieldset>";
-	echo "<div id='success_page'>";
-	echo "<h1>Email Sent Successfully.</h1>";
-	echo "<p>Thank you <strong>$name</strong>, your message has been submitted to us.</p>";
-	echo "</div>";
-	echo "</fieldset>";
+$email->IsSMTP(); // telling the class to use SMTP
 
+$email->SMTPDebug  = 2;                     // enables SMTP debug information (for testing)
+
+$email->SMTPAuth   = true;                  // enable SMTP authentication
+
+$email->SMTPSecure = "tls";                 // sets the prefix to the servier
+
+$email->Host       = "smtp.gmail.com";      // sets GMAIL as the SMTP server
+
+$email->Port       = 587;                   // set the SMTP port for the GMAIL server
+
+$email->Username   = "thlira15@gmail.com";  // GMAIL username
+
+$email->Password   = "R3tsandrows";            // GMAIL password
+
+//$mail->IsHTML(true);
+
+
+
+$email->AddAttachment( $target_file  );
+
+
+if(!$email->send()) {
+    echo 'Message could not be sent.';
+    echo 'Mailer Error: ' . $mail->ErrorInfo;
 } else {
-
-	echo 'ERROR!';
-
+    echo 'Message has been sent';
 }
+
+
+
+
+
+
+
+

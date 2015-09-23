@@ -89,7 +89,7 @@
                 <div class="clearfix"></div>
                 
                 <div class="section-title">
-                    <h3>Mande o seu currículo para nós!</h3>
+                    <h3>Envie o seu currículo!</h3>
                     <div class="divider"></div>
                     
                 </div><!-- end section title -->

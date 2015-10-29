@@ -2856,6 +2856,7 @@ blockquote.mini {
 
 .container-fluid {
   max-width: 1300px;
+  padding-left: 0px !important;    /* Mudei isso, eh so apagar essa linha   */
 }
 
 .section-colorful,

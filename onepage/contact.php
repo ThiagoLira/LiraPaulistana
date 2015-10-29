@@ -76,10 +76,25 @@ if(get_magic_quotes_gpc()) {
 
 $email = new PHPMailer();
 
-$email->From      = $email2;
-$email->FromName  = $name;
-$email->Subject   = "Curriculo de " . $name ;
+                  
 
+$email->isSMTP();                        // Setar o uso do SMTP
+$email->Host = 'smtp.espacolp.com.br';  	// Servidor smtp 
+$email->SMTPAuth = true;                 // Habilita a autenticação do form
+$email->Username = 'contato@espacolp.com.br';       // Conta de e-mail que realizará o envio
+$email->Password = 'topazio258lp';       // Senha da conta de e-mail
+
+$email->Port = 587;                       // Porta de conexão 
+$email->From = 'contato@espacolp.com.br'; 			// e-mail From deve ser o mesmo de "username" (contadeEmail)
+$email->FromName = 'Curriculo'; 				// Nome que será exibido ao receber a mensagem. 
+$email->addAddress('contato@espacolp.com.br', 'Curriculo'); // Destinatário 
+
+
+
+//$mail->IsHTML(true);
+
+
+$email->Subject   = "Curriculo de " . $name ;
 
 if(isset($_POST['website'])){
 $email->Body      = $comments . "\r\n" . 'Site pessoal: ' . $_POST['website'] ."\r\n". 'Email : ' . $email2;
@@ -88,36 +103,24 @@ else{
 $email->Body      = $comments ."\r\n". 'Email : ' . $email2;
 }
 
-$email->AddAddress( 'thlira15@gmail.com' );
-
-$email->IsSMTP(); // telling the class to use SMTP
-
-$email->SMTPDebug  = 2;                     // enables SMTP debug information (for testing)
-
-$email->SMTPAuth   = true;                  // enable SMTP authentication
-
-$email->SMTPSecure = "tls";                 // sets the prefix to the servier
-
-$email->Host       = "smtp.gmail.com";      // sets GMAIL as the SMTP server
-
-$email->Port       = 587;                   // set the SMTP port for the GMAIL server
-
-$email->Username   = "thlira15@gmail.com";  // GMAIL username
-
-$email->Password   = "R3tsandrows";            // GMAIL password
-
-//$mail->IsHTML(true);
-
-
 
 $email->AddAttachment( $target_file , "curriculo.pdf"  );
 
 
 if(!$email->send()) {
     //echo 'Message could not be sent.';
-    //echo 'Mailer Error: ' . $mail->ErrorInfo;
+    //echo 'Mailer Error: ' . $email->ErrorInfo;
 } else {
     //echo 'Message has been sent';
+    echo '
+	 <div class="baron">
+	 Email enviado com sucesso!
+
+	</div>
+
+	<h3 class= "baron">Clique <a href = "index.html" > aqui </a> para retornar ao nosso site.</h3>
+
+    ';
 }
 
 

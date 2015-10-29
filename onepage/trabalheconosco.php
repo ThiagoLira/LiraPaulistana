@@ -12,30 +12,30 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Creativ - Homepage</title>
+    <title>Trabalhe conosco</title>
 
     <!-- Favicons
     ================================================== -->
-    <link rel="shortcut icon" href="../default/images/favicon.ico">
-    <link rel="apple-touch-icon" href="../default/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="../default/images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="../default/images/apple-touch-icon-114x114.png">
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
 
     <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
-    <link rel="stylesheet" type="text/css" href="../default/css/extralayers.css" media="screen" /> 
-    <link rel="stylesheet" type="text/css" href="../default/rs-plugin/css/settings.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="css/extralayers.css" media="screen" /> 
+    <link rel="stylesheet" type="text/css" href="rs-plugin/css/settings.css" media="screen" />
 
     <!-- PORTFOLIO AND LIGHTBOX SETTINGS -->
-    <link href="../default/bfassets/css/bootFolio.css" rel="stylesheet">
-    <link href="../default/bfassets/css/prettyPhoto.css" rel="stylesheet">
+    <link href="bfassets/css/bootFolio.css" rel="stylesheet">
+    <link href="bfassets/css/prettyPhoto.css" rel="stylesheet">
 
     <!-- Bootstrap Core CSS -->
-    <link href="../default/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../default/css/font-awesome.css" rel="stylesheet">
-    <link href="../default/css/et-icons.css" rel="stylesheet">
-    <link href="../default/css/animate.min.css" rel="stylesheet">
-    <link href="../default/css/owl-carousel.css" rel="stylesheet">
-    <link href="../default/style.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/et-icons.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/owl-carousel.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,400italic,600italic,700,700italic,900' rel='stylesheet' type='text/css'>
@@ -124,7 +124,7 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <label>Informações adicionais<span>*</span></label>
                             <textarea class="form-control" name="comments" id="comments" rows="6" placeholder="Message"></textarea>
-                            <button type="submit" name = "submit" value="submit" id="submit" class="btn btn-lg btn-primary pull-right border-radius">GET A QUOTE</button>
+                            <button type="submit" name = "submit" value="submit" id="submit" class="btn btn-lg btn-primary pull-right border-radius">Enviar</button>
                         </div>
                     </form>    
                 </div><!-- end contact-form -->
@@ -152,12 +152,12 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="../default/js/jquery.js"></script>
-    <script src="../default/js/bootstrap.min.js"></script>
-    <script src="../default/js/retina.js"></script>
-    <script src="../default/js/wow.min.js"></script>
-    <script src="../default/js/jquery.stellar.js"></script>
-    <script src="../default/js/home-scripts.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/retina.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/jquery.stellar.js"></script>
+    <script src="js/home-scripts.js"></script>
     
     <script src="js/sendCurriculo.js"   >        </script>
     <script src="js/jigowatt.js"></script>

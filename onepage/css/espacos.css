@@ -1,0 +1,19 @@
+.espacosLista{
+	list-style-image: url(../images/favicon2.png);
+	margin-left: 10px;
+	
+}
+
+
+.espacosItem{
+		
+	
+	font-family: "Montserrat",sans-serif;
+    color: #000;
+    font-weight: 300;
+    line-height: 1.2;
+    margin: 0;
+    margin-bottom: 16px;
+    padding: 0;
+
+}

@@ -5,13 +5,13 @@
                     columnNum = 1,
                     columnWidth = 0;
                 if (w > 1200) {
-                    columnNum  = 5;
+                    columnNum  = 6;
                 } else if (w > 900) {
-                    columnNum  = 4;
+                    columnNum  = 5;
                 } else if (w > 600) {
-                    columnNum  = 3;
+                    columnNum  = 4;
                 } else if (w > 300) {
-                    columnNum  = 2;
+                    columnNum  = 3;
                 }
                 columnWidth = Math.floor(w/columnNum);
                 
